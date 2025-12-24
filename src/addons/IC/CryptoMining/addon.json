@@ -1,0 +1,17 @@
+{
+    "legacy_addon_id": "",
+    "title": "Crypto Mining Simulation",
+    "description": "Virtual cryptocurrency mining system with passive income, rig management, and market simulation",
+    "version_id": 1000001,
+    "version_string": "1.0.1",
+    "dev": "IdleChatter",
+    "dev_url": "",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": {
+        "XF": [2030000, "XenForo 2.3.0+"],
+        "php": ["8.0.0", "PHP 8.0.0+"]
+    },
+    "icon": ""
+}
