@@ -114,7 +114,7 @@ class Setup extends AbstractSetup
 			$table->addColumn('crypto_name', 'varchar', 50)->setDefault('Bitcoin');
 			$table->addColumn('current_price', 'decimal', '12,2'); // USD per BTC
 			$table->addColumn('previous_price', 'decimal', '12,2')->nullable();
-			$table->addColumn('price_change_percent', 'decimal', '8,3')->nullable(); // % change
+			$table->addColumn('price_change_percent', 'decimal', '6,3')->nullable(); // % change
 			$table->addColumn('daily_volume', 'decimal', '15,2')->setDefault(0);
 			$table->addColumn('market_cap', 'decimal', '18,2')->nullable();
 			$table->addColumn('last_updated', 'int');
@@ -181,7 +181,7 @@ class Setup extends AbstractSetup
 			$table->addColumn('event_type', 'varchar', 50); // bull_run, crash, halving, difficulty_increase, regulation, neutral
 			$table->addColumn('event_title', 'varchar', 200);
 			$table->addColumn('event_description', 'text')->nullable();
-			$table->addColumn('price_impact_percent', 'decimal', '8,3'); // +/- percent
+			$table->addColumn('price_impact_percent', 'decimal', '10,3'); // +/- percent (extra safe sizing)
 			$table->addColumn('duration_hours', 'int')->setDefault(24);
 			$table->addColumn('is_active', 'tinyint')->setDefault(0);
 			$table->addColumn('triggered_date', 'int')->nullable();
