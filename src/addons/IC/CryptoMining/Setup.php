@@ -181,7 +181,7 @@ class Setup extends AbstractSetup
 			$table->addColumn('event_type', 'varchar', 50); // bull_run, crash, halving, difficulty_increase, regulation, neutral
 			$table->addColumn('event_title', 'varchar', 200);
 			$table->addColumn('event_description', 'text')->nullable();
-			$table->addColumn('price_impact_percent', 'decimal', '6,3'); // +/- percent
+			$table->addColumn('price_impact_percent', 'decimal', '8,3'); // +/- percent
 			$table->addColumn('duration_hours', 'int')->setDefault(24);
 			$table->addColumn('is_active', 'tinyint')->setDefault(0);
 			$table->addColumn('triggered_date', 'int')->nullable();
