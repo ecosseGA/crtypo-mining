@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+	<phrase title="ic_crypto_insufficient_credits" version_id="1000004" version_string="1.0.4"><![CDATA[You do not have enough credits to purchase this mining rig.]]></phrase>
+	<phrase title="ic_crypto_level_required" version_id="1000004" version_string="1.0.4"><![CDATA[You need to be level {level} or higher to purchase this rig.]]></phrase>
+	<phrase title="ic_crypto_rig_not_available" version_id="1000004" version_string="1.0.4"><![CDATA[This mining rig is not currently available for purchase.]]></phrase>
+	<phrase title="ic_crypto_rig_not_found" version_id="1000004" version_string="1.0.4"><![CDATA[The requested mining rig could not be found.]]></phrase>
+	<phrase title="ic_crypto_purchase_error" version_id="1000004" version_string="1.0.4"><![CDATA[An error occurred while processing your purchase. Please try again.]]></phrase>
+	<phrase title="ic_crypto_rig_purchased" version_id="1000004" version_string="1.0.4"><![CDATA[Successfully purchased {rig}! Your new rig is now mining.]]></phrase>
+	<phrase title="ic_crypto_max_upgrade_level" version_id="1000004" version_string="1.0.4"><![CDATA[This rig is already at maximum upgrade level.]]></phrase>
+</phrases>

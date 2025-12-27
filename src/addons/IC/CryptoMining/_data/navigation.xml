@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation>
-	<!-- Navigation entries will be added in v1.0.4 -->
+	<navigation navigation_id="icCryptoMining" parent_navigation_id="" display_order="50" condition="" icon="" admin_permission="">
+		<title>Crypto Mining</title>
+	</navigation>
+	
+	<navigation navigation_id="icCryptoMiningDashboard" parent_navigation_id="icCryptoMining" display_order="10" condition="" icon="" admin_permission="">
+		<title>Dashboard</title>
+		<link>crypto-mining</link>
+	</navigation>
+	
+	<navigation navigation_id="icCryptoMiningShop" parent_navigation_id="icCryptoMining" display_order="20" condition="" icon="" admin_permission="">
+		<title>Rig Shop</title>
+		<link>crypto-mining/shop</link>
+	</navigation>
 </navigation>
