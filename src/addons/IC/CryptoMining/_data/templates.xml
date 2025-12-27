@@ -48,7 +48,7 @@
 								<div class="structItem-minor"><strong>{{number($rig.base_cost)}} credits</strong></div>
 								<xf:if is="$visitor.user_id">
 									<xf:if is="$rig.canPurchase($visitor)">
-										<a href="{{link('crypto-mining/shop/buy', $rig)}}" class="button button--cta">Purchase</a>
+										<a href="{{link('crypto-shop/buy', $rig)}}" class="button button--cta">Purchase</a>
 									<xf:elseif is="$visitor.level < $rig.required_level" />
 										<div class="structItem-minor"><em>Requires level {{number($rig.required_level)}}</em></div>
 									<xf:else />
@@ -125,7 +125,7 @@
 			</p>
 		</div>
 		
-		<xf:form action="{{link('crypto-mining/shop/buy', $rigType)}}" class="block-body" ajax="true">
+		<xf:form action="{{link('crypto-shop/buy', $rigType)}}" class="block-body" ajax="true">
 			<div class="block-row">
 				<xf:submitrow submit="Confirm Purchase" icon="purchase" />
 			</div>
@@ -245,7 +245,7 @@
 		<xf:else />
 			<div class="blockMessage blockMessage--important">
 				<h3>No Mining Rigs Yet</h3>
-				<p>You haven't purchased any mining rigs yet. Visit the <a href="{{link('crypto-mining/shop')}}">Rig Shop</a> to get started!</p>
+				<p>You haven't purchased any mining rigs yet. Visit the <a href="{{link('crypto-shop')}}">Rig Shop</a> to get started!</p>
 			</div>
 		</xf:if>
 	</div>

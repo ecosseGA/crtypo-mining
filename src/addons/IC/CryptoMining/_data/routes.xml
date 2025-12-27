@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <routes>
-	<route route_type="public" route_prefix="crypto-mining" sub_name="shop" controller="IC\CryptoMining:Shop" context="" action_prefix="" />
+	<route route_type="public" route_prefix="crypto-shop" controller="IC\CryptoMining:Shop" context="" action_prefix="" />
 	<route route_type="public" route_prefix="crypto-mining" controller="IC\CryptoMining:Dashboard" context="" action_prefix="" />
 </routes>

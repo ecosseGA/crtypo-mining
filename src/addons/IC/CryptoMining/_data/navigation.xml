@@ -11,6 +11,6 @@
 	
 	<navigation navigation_id="icCryptoMiningShop" parent_navigation_id="icCryptoMining" display_order="20" condition="" icon="" admin_permission="">
 		<title>Rig Shop</title>
-		<link>crypto-mining/shop</link>
+		<link>crypto-shop</link>
 	</navigation>
 </navigation>
