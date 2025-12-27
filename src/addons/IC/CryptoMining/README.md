@@ -1,245 +1,126 @@
-# Crypto Mining Simulation - v1.0.3
+# Crypto Mining Simulation - v1.0.4
 
-## 📦 Version: 1.0.3 (Entities & Repositories)
+## 📦 Version: 1.0.4 (Shop UI)
 
-**Status:** ✅ Data layer complete - Ready for UI development!
-
----
-
-## 🎯 What's New in v1.0.3
-
-### **8 Entity Classes Created:**
-1. ✅ `Entity/RigType.php` - Mining rig types with getters
-2. ✅ `Entity/UserRig.php` - User-owned rigs with calculations
-3. ✅ `Entity/Wallet.php` - Crypto wallet management
-4. ✅ `Entity/Market.php` - Market price tracking
-5. ✅ `Entity/MarketHistory.php` - Price history for charts
-6. ✅ `Entity/Transaction.php` - Transaction logging
-7. ✅ `Entity/MarketEvent.php` - Market events (bull runs, crashes)
-8. ✅ `Entity/Leaderboard.php` - Ranking system
-
-### **4 Repository Classes Created:**
-1. ✅ `Repository/RigType.php` - Rig catalog management
-2. ✅ `Repository/UserRig.php` - User rig operations
-3. ✅ `Repository/Wallet.php` - Wallet operations
-4. ✅ `Repository/Market.php` - Market data & pricing
+**Status:** ✅ Shop complete - Users can browse and purchase rigs!
 
 ---
 
-## 🔧 Key Features Implemented
+## 🎯 What's New in v1.0.4
 
-### **RigType Entity:**
-- **Getters:**
-  - `tier_name` - Budget/Consumer/Professional/Elite
-  - `daily_output` - BTC per day
-  - `daily_profit_base` - Net profit at current price
-  - `roi_days` - Days to break even
-- **Methods:**
-  - `canPurchase()` - Check level & credit requirements
+### **2 Controllers Created:**
+1. ✅ `Pub/Controller/Shop.php` - Browse rigs, purchase flow
+2. ✅ `Pub/Controller/Dashboard.php` - View owned rigs and stats
 
-### **UserRig Entity:**
-- **Getters:**
-  - `current_hash_rate` - With upgrade bonuses
-  - `durability_penalty` - Performance reduction
-  - `effective_hash_rate` - Final output rate
-  - `hourly_power_cost` - Operating costs
-  - `durability_status` - good/warning/danger
-  - `needs_repair` - Boolean flag
-- **Methods:**
-  - `getRepairCost()` - Calculate repair price
-  - `getUpgradeCost()` - Calculate upgrade price
-  - `canUpgrade()` - Check if upgradeable
+### **Routing & Navigation:**
+1. ✅ Routes configured (`crypto-mining` and `crypto-mining/shop`)
+2. ✅ Navigation menu entries
+3. ✅ Permissions (view, mine)
 
-### **Wallet Entity:**
-- **Getters:**
-  - `balance_usd` - Value in dollars
-  - `net_credits` - Earned - spent
-  - `net_crypto` - Total holdings
-- **Methods:**
-  - `addCrypto()` - Deposit crypto
-  - `removeCrypto()` - Withdraw crypto
-  - `hasSufficientBalance()` - Check funds
+### **3 Templates Created:**
+1. ✅ `ic_crypto_shop_index` - Shop page with 16 rigs by tier
+2. ✅ `ic_crypto_shop_buy` - Purchase confirmation page
+3. ✅ `ic_crypto_dashboard` - Dashboard with wallet & rig stats
 
-### **Market Entity:**
-- **Getters:**
-  - `is_up` - Price increasing?
-  - `is_down` - Price decreasing?
-  - `trend_direction` - up/down/neutral
+### **7 Phrases Added:**
+- Error messages for insufficient credits, level requirements
+- Success messages for purchases
+- Navigation labels
 
 ---
 
-## 📊 Repository Capabilities
+## 🎮 User Experience Flow
 
-### **RigType Repository:**
-```php
-$rigRepo = \XF::repository('IC\CryptoMining:RigType');
+### **Shopping Experience:**
 
-// Find all available rigs for user
-$rigs = $rigRepo->findAvailableRigs($user)->fetch();
+1. **User visits:** `/crypto-mining/shop`
+2. **Sees 16 rigs organized by 4 tiers:**
+   - 💵 Tier 1: Budget (4 rigs)
+   - 💰 Tier 2: Consumer (4 rigs)
+   - 💎 Tier 3: Professional (4 rigs)
+   - 🏆 Tier 4: Elite (4 rigs)
 
-// Get rigs by tier
-$tier1Rigs = $rigRepo->findRigsByTier(1)->fetch();
+3. **For each rig, displays:**
+   - Name and description
+   - Hash rate (BTC/hour and BTC/day)
+   - Power consumption ($/day)
+   - Durability (days)
+   - Daily profit estimate
+   - ROI (days to break even)
+   - Purchase price in credits
+   - Purchase button (or level requirement)
 
-// Get specific rig
-$rig = $rigRepo->getRigType($rigTypeId);
+4. **Clicks "Purchase"** → Confirmation page shows:
+   - Full specifications
+   - Profitability at current BTC price
+   - Detailed cost breakdown
+   - "Confirm Purchase" button
 
-// Get rigs grouped by tier
-$grouped = $rigRepo->getRigsByTier();
+5. **After purchase:**
+   - Credits deducted
+   - Rig created in database
+   - Wallet created (if first purchase)
+   - Transaction logged
+   - Redirect to dashboard
 
-// Get tier statistics
-$stats = $rigRepo->getTierStats();
-```
+### **Dashboard Experience:**
 
-### **UserRig Repository:**
-```php
-$userRigRepo = \XF::repository('IC\CryptoMining:UserRig');
+1. **User visits:** `/crypto-mining` (dashboard)
+2. **Sees:**
+   - Current Bitcoin price
+   - Active market event (if any)
+   - Wallet balance (BTC and USD)
+   - Mining statistics (daily output, profit)
+   - List of all owned rigs with:
+     - Current output
+     - Durability status (🟢🟡🔴)
+     - Upgrade level
+     - Mining status (active/paused)
+     - Total mined
 
-// Get user's rigs
-$rigs = $userRigRepo->getUserRigs($userId);
-
-// Get active rigs only
-$activeRigs = $userRigRepo->getActiveRigs($userId);
-
-// Calculate daily output
-$dailyBTC = $userRigRepo->getTotalDailyOutput($userId);
-
-// Calculate net profit
-$profit = $userRigRepo->getNetDailyProfit($userId);
-
-// Get user statistics
-$stats = $userRigRepo->getUserStats($userId);
-
-// Find rigs needing repair
-$damaged = $userRigRepo->findRigsNeedingRepair($userId)->fetch();
-
-// Purchase new rig
-$userRig = $userRigRepo->purchaseRig($user, $rigType);
-$userRig->save();
-```
-
-### **Wallet Repository:**
-```php
-$walletRepo = \XF::repository('IC\CryptoMining:Wallet');
-
-// Get or create wallet
-$wallet = $walletRepo->getOrCreateWallet($userId);
-
-// Add crypto
-$walletRepo->addCrypto($userId, 0.05, 'mining');
-
-// Remove crypto
-$walletRepo->removeCrypto($userId, 0.01);
-
-// Record credits spent
-$walletRepo->recordCreditsSpent($userId, 500);
-
-// Get richest users
-$richest = $walletRepo->getRichestUsers(100);
-
-// Get top miners
-$topMiners = $walletRepo->getTopMiners(100);
-```
-
-### **Market Repository:**
-```php
-$marketRepo = \XF::repository('IC\CryptoMining:Market');
-
-// Get current price
-$price = $marketRepo->getCurrentPrice();
-
-// Update price
-$marketRepo->updatePrice(52000.00);
-
-// Get price history
-$history = $marketRepo->getPriceHistory(30); // Last 30 days
-
-// Trigger random event
-$event = $marketRepo->triggerRandomEvent();
-
-// Convert crypto to credits
-$credits = $marketRepo->cryptoToCredits(0.5);
-
-// Convert credits to crypto
-$btc = $marketRepo->creditsToCrypto(25000);
-```
+3. **If no rigs:**
+   - Shows message with link to shop
 
 ---
 
-## 🎮 Example Usage Scenarios
+## 🎨 Template Features
 
-### **Scenario 1: User Purchases Rig**
+### **Shop Template:**
+- ✅ Organized by tier with emoji headers
+- ✅ XenForo structItem layout
+- ✅ Level-based access control
+- ✅ Credit requirement checks
+- ✅ Real-time profitability calculations
+- ✅ Responsive design
 
-```php
-// Get rig type
-$rigRepo = \XF::repository('IC\CryptoMining:RigType');
-$rigType = $rigRepo->getRigType(1); // Basic Miner
+### **Dashboard Template:**
+- ✅ Wallet summary with USD conversion
+- ✅ Mining statistics overview
+- ✅ Rig list with status indicators
+- ✅ Color-coded durability (green/yellow/red)
+- ✅ Empty state handling
 
-// Check if user can purchase
-if (!$rigType->canPurchase(\XF::visitor(), $error))
-{
-    return $this->error($error);
-}
-
-// Purchase rig
-$userRigRepo = \XF::repository('IC\CryptoMining:UserRig');
-$userRig = $userRigRepo->purchaseRig(\XF::visitor(), $rigType);
-$userRig->save();
-
-// Deduct credits (handled separately)
-// Create wallet if needed
-$walletRepo = \XF::repository('IC\CryptoMining:Wallet');
-$wallet = $walletRepo->getOrCreateWallet(\XF::visitor()->user_id);
-$walletRepo->recordCreditsSpent(\XF::visitor()->user_id, $rigType->base_cost);
-```
-
-### **Scenario 2: Display User's Dashboard**
-
-```php
-$userRigRepo = \XF::repository('IC\CryptoMining:UserRig');
-$walletRepo = \XF::repository('IC\CryptoMining:Wallet');
-$marketRepo = \XF::repository('IC\CryptoMining:Market');
-
-$userId = \XF::visitor()->user_id;
-
-$viewParams = [
-    'rigs' => $userRigRepo->getUserRigs($userId),
-    'wallet' => $walletRepo->getOrCreateWallet($userId),
-    'stats' => $userRigRepo->getUserStats($userId),
-    'btcPrice' => $marketRepo->getCurrentPrice(),
-    'activeEvent' => $marketRepo->getActiveEvent()
-];
-
-return $this->view('IC\CryptoMining:Dashboard', 'ic_crypto_dashboard', $viewParams);
-```
-
-### **Scenario 3: Calculate Earnings**
-
-```php
-$userRig = \XF::repository('IC\CryptoMining:UserRig')->getUserRig(5);
-
-echo "Current Hash Rate: " . $userRig->current_hash_rate . " BTC/hr\n";
-echo "Durability Penalty: " . ($userRig->durability_penalty * 100) . "%\n";
-echo "Effective Hash Rate: " . $userRig->effective_hash_rate . " BTC/hr\n";
-echo "Daily Output: " . ($userRig->effective_hash_rate * 24) . " BTC/day\n";
-echo "Hourly Power Cost: $" . $userRig->hourly_power_cost . "\n";
-echo "Needs Repair: " . ($userRig->needs_repair ? 'YES' : 'NO') . "\n";
-
-if ($userRig->needs_repair)
-{
-    echo "Repair Cost: " . $userRig->getRepairCost() . " credits\n";
-}
-```
+### **Purchase Confirmation:**
+- ✅ Detailed specifications
+- ✅ Profitability breakdown
+- ✅ CSRF protection
+- ✅ Ajax-enabled form
 
 ---
 
 ## 📥 Installation
 
-### **Upgrading from v1.0.2:**
+### **Upgrading from v1.0.3:**
 
 1. **Upload files to GitHub:**
-   - `addon.json` (version 1.0.3)
-   - All 8 Entity files
-   - All 4 Repository files
+   - `addon.json` (version 1.0.4)
+   - `Pub/Controller/Shop.php`
+   - `Pub/Controller/Dashboard.php`
+   - `_data/routes.xml`
+   - `_data/navigation.xml`
+   - `_data/permissions.xml`
+   - `_data/phrases.xml`
+   - `_data/templates.xml`
 
 2. **Download from GitHub**
 
@@ -250,88 +131,185 @@ if ($userRig->needs_repair)
    - AdminCP > Add-ons
    - Find "Crypto Mining Simulation"
    - Click "Upgrade"
-   - Should show v1.0.2 → v1.0.3
-   - **No database changes** (only code files)
+   - v1.0.3 → v1.0.4
 
 ### **Expected Result:**
-- ✅ Version shows 1.0.3
-- ✅ All entities queryable
-- ✅ All repositories functional
+- ✅ Version shows 1.0.4
+- ✅ "Crypto Mining" appears in navigation
+- ✅ Shop page accessible
+- ✅ Dashboard page accessible
 - ✅ No errors in log
 
 ---
 
-## 🧪 Testing v1.0.3
+## 🧪 Testing v1.0.4
 
-### **Test Entity Queries:**
+### **Test Shop Page:**
 
-Open XenForo console and try:
+1. **Visit:** `yourforum.com/crypto-mining/shop`
+2. **Check:**
+   - ✅ All 16 rigs display
+   - ✅ Organized by 4 tiers
+   - ✅ ROI calculations show
+   - ✅ Current BTC price displays
+   - ✅ Purchase buttons work
 
-```php
-// Test RigType entity
-$rigType = \XF::em()->find('IC\CryptoMining:RigType', 1);
-print_r([
-    'name' => $rigType->rig_name,
-    'tier' => $rigType->tier_name,
-    'daily_output' => $rigType->daily_output,
-    'roi_days' => $rigType->roi_days
-]);
+### **Test Purchase Flow:**
 
-// Test Market repository
-$marketRepo = \XF::repository('IC\CryptoMining:Market');
-echo "Bitcoin Price: $" . $marketRepo->getCurrentPrice() . "\n";
+1. **Click "Purchase" on USB ASIC Miner (100 credits)**
+2. **Check:**
+   - ✅ Confirmation page loads
+   - ✅ Specifications display
+   - ✅ Profitability calculates
+3. **Click "Confirm Purchase"**
+4. **Check:**
+   - ✅ Credits deducted
+   - ✅ Success message shows
+   - ✅ Redirects to dashboard
+   - ✅ Rig appears in dashboard
+   - ✅ Transaction logged
 
-// Test Wallet repository
-$walletRepo = \XF::repository('IC\CryptoMining:Wallet');
-$wallet = $walletRepo->getOrCreateWallet(1);
-echo "Wallet created for user 1\n";
-```
+### **Test Dashboard:**
+
+1. **Visit:** `yourforum.com/crypto-mining`
+2. **Check:**
+   - ✅ Wallet displays
+   - ✅ Stats show correctly
+   - ✅ Rigs list displays
+   - ✅ Durability indicators work
+   - ✅ If no rigs, shows shop link
 
 ---
 
-## 🎯 What's Next - v1.0.4
+## 🎯 What Users Can Now Do
 
-**Shop UI (Browse & Purchase Rigs)**
+### **Shopping:**
+- ✅ Browse 16 mining rigs across 4 tiers
+- ✅ See real-time profitability
+- ✅ Calculate ROI before purchase
+- ✅ Level-gated access to high-tier rigs
+- ✅ One-click purchase with confirmation
 
-Will create:
-- `Pub/Controller/Shop.php` - Shop page controller
-- Routes & navigation
-- Shop template (browse 16 rigs by tier)
-- Purchase confirmation flow
-- Integration with entities/repositories
+### **Dashboard:**
+- ✅ View crypto balance (BTC and USD)
+- ✅ See total rigs owned
+- ✅ Monitor daily output and profit
+- ✅ Check rig durability status
+- ✅ Track lifetime mining stats
 
-**Estimated time:** ~1.5 hours
+### **Navigation:**
+- ✅ "Crypto Mining" menu in navbar
+- ✅ "Dashboard" submenu
+- ✅ "Rig Shop" submenu
+
+---
+
+## 🔧 Technical Implementation
+
+### **Purchase Flow:**
+```
+1. User clicks "Purchase"
+2. Shop controller validates:
+   - User logged in?
+   - Sufficient credits?
+   - Meets level requirement?
+3. Database transaction:
+   - Create UserRig
+   - Deduct credits
+   - Update wallet
+   - Log transaction
+4. Commit or rollback
+5. Redirect to dashboard
+```
+
+### **Controller Methods:**
+
+**Shop Controller:**
+- `actionIndex()` - List all rigs by tier
+- `actionBuy()` - Purchase confirmation & processing
+- `assertRigTypeExists()` - Validation helper
+
+**Dashboard Controller:**
+- `actionIndex()` - Display wallet, stats, and rigs
+
+### **Security:**
+- ✅ Permission checks (view, mine)
+- ✅ CSRF tokens
+- ✅ Database transactions
+- ✅ Input validation
+- ✅ Error handling with rollback
+
+---
+
+## 🚀 What's Next - v1.0.5
+
+**Phase 1 MVP Completion!**
+
+v1.0.5 will add:
+- ✅ Mining cron job (automatic payouts)
+- ✅ Marketplace (sell crypto for credits)
+- ✅ Enhanced dashboard features
+- ✅ Rig management (activate/deactivate)
+
+**After v1.0.5:**
+- Users can purchase rigs ✅ (DONE)
+- Rigs mine crypto automatically ⬜ (v1.0.5)
+- Users can sell crypto ⬜ (v1.0.5)
+- Complete MVP! 🎊
+
+---
+
+## 📊 Progress Tracker
+
+**Phase 1 MVP:**
+- ✅ v1.0.1 - Addon skeleton
+- ✅ v1.0.2 - Database tables (16 rigs)
+- ✅ v1.0.3 - Entities & Repositories
+- ✅ v1.0.4 - Shop UI ← **YOU ARE HERE**
+- ⬜ v1.0.5 - Mining cron & Marketplace
+
+**Progress: ~80% complete!** 🎊
 
 ---
 
 ## ✅ Success Criteria
 
-v1.0.3 is successful if:
-- [x] All 8 entities created
-- [x] All 4 repositories created
-- [x] Entities have proper getters
-- [x] Relationships work (UserRig → RigType)
-- [x] Repository methods functional
-- [x] Upgrades cleanly from v1.0.2
-- [x] No errors when querying data
+v1.0.4 is successful if:
+- [x] Shop page loads with all rigs
+- [x] Rigs organized by tier
+- [x] Purchase flow works
+- [x] Credits deducted correctly
+- [x] Wallet created on first purchase
+- [x] Transactions logged
+- [x] Dashboard displays correctly
+- [x] Navigation menu appears
+- [x] No errors in server log
 
 ---
 
-## 🔧 Technical Notes
+## 🎮 Example User Journey
 
-### **Design Patterns Used:**
-- ✅ XenForo Entity/Repository pattern
-- ✅ Proper structure definitions
-- ✅ Getter methods for calculated fields
-- ✅ Relations for joins
-- ✅ Type hints throughout
+**John's First Mining Rig:**
 
-### **Code Quality:**
-- ✅ Comprehensive PHPDoc blocks
-- ✅ Descriptive method names
-- ✅ Consistent formatting
-- ✅ Follows XenForo conventions
+1. **John logs in** with 500 credits
+2. **Visits shop** from navigation menu
+3. **Sees USB ASIC Miner** (100 credits, 1-day ROI)
+4. **Clicks "Purchase"**
+5. **Reviews specs:**
+   - Output: 0.0024 BTC/day
+   - Power: $5/day
+   - Net profit: $115/day
+6. **Clicks "Confirm Purchase"**
+7. **Credits:** 500 → 400
+8. **Redirected to dashboard**
+9. **Sees his new rig:**
+   - Mining status: Active
+   - Durability: 100% 🟢
+   - Output: 0.0001 BTC/hr
+10. **Waits for cron job** (v1.0.5) to pay out mined crypto
 
 ---
 
-**Data layer is SOLID! Ready for UI development!** 🚀💎
+**Shop UI is LIVE! Users can now purchase rigs!** 🎉⛏️
+
+**Ready for v1.0.5 - The final piece of Phase 1!** 🚀
