@@ -88,7 +88,7 @@ class Setup extends AbstractSetup
 		$this->schemaManager()->createTable('xf_ic_crypto_wallet', function(Create $table)
 		{
 			$table->addColumn('wallet_id', 'int')->autoIncrement();
-			$table->addColumn('user_id', 'int')->unique();
+			$table->addColumn('user_id', 'int');
 			$table->addColumn('crypto_balance', 'decimal', '12,6')->setDefault(0); // Current BTC balance
 			$table->addColumn('total_mined', 'decimal', '12,6')->setDefault(0); // Lifetime mined
 			$table->addColumn('total_sold', 'decimal', '12,6')->setDefault(0); // Lifetime sold
