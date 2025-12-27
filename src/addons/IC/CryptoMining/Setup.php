@@ -470,7 +470,7 @@ class Setup extends AbstractSetup
 			'event_type' => 'bull_run',
 			'event_title' => 'Bitcoin ETF Approved!',
 			'event_description' => 'Major institutional investment approved by regulators',
-			'price_impact_percent' => 20.000,
+			'price_impact_percent' => '20.000',
 			'duration_hours' => 48,
 			'is_active' => 0
 		]);
@@ -479,7 +479,7 @@ class Setup extends AbstractSetup
 			'event_type' => 'crash',
 			'event_title' => 'Regulatory Crackdown',
 			'event_description' => 'Government announces stricter cryptocurrency regulations',
-			'price_impact_percent' => -15.000,
+			'price_impact_percent' => '-15.000',
 			'duration_hours' => 72,
 			'is_active' => 0
 		]);
@@ -488,7 +488,7 @@ class Setup extends AbstractSetup
 			'event_type' => 'halving',
 			'event_title' => 'Bitcoin Halving Event',
 			'event_description' => 'Block rewards cut in half - scarcity increases',
-			'price_impact_percent' => 10.000,
+			'price_impact_percent' => '10.000',
 			'duration_hours' => 168,
 			'is_active' => 0
 		]);
@@ -497,7 +497,7 @@ class Setup extends AbstractSetup
 			'event_type' => 'difficulty_increase',
 			'event_title' => 'Mining Difficulty Spike',
 			'event_description' => 'Network difficulty adjustment makes mining harder',
-			'price_impact_percent' => -5.000,
+			'price_impact_percent' => '-5.000',
 			'duration_hours' => 24,
 			'is_active' => 0
 		]);
@@ -506,7 +506,7 @@ class Setup extends AbstractSetup
 			'event_type' => 'regulation',
 			'event_title' => 'New KYC Requirements',
 			'event_description' => 'Exchanges must implement identity verification',
-			'price_impact_percent' => -8.000,
+			'price_impact_percent' => '-8.000',
 			'duration_hours' => 48,
 			'is_active' => 0
 		]);
