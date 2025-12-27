@@ -15,165 +15,52 @@
 			</div>
 		</xf:if>
 		
-		<!-- Tier 1: Budget Mining -->
-		<xf:if is="count($rigsByTier[1]) > 0">
-			<div class="block-header">
-				<h2 class="block-tabHeader-title">💵 Tier 1: Budget Mining</h2>
-			</div>
-			<div class="structItemContainer">
-				<xf:foreach loop="$rigsByTier[1]" value="$rig">
-					<div class="structItem structItem--middle">
-						<div class="structItem-cell structItem-cell--main">
-							<h3 class="structItem-title">{$rig.rig_name}</h3>
-							<div class="structItem-minor">
-								<xf:if is="$rig.rig_description">
-									<div>{$rig.rig_description}</div>
+		<!-- Loop through all tiers -->
+		<xf:foreach loop="$rigsByTier" key="$tier" value="$rigs">
+			<xf:if is="$rigs">
+				<div class="block-header">
+					<h2 class="block-tabHeader-title">
+						<xf:if is="$tier == 1">💵 Tier 1: Budget Mining
+						<xf:elseif is="$tier == 2" />💰 Tier 2: Consumer Grade
+						<xf:elseif is="$tier == 3" />💎 Tier 3: Professional
+						<xf:else />🏆 Tier 4: Elite</xf:if>
+					</h2>
+				</div>
+				<div class="structItemContainer">
+					<xf:foreach loop="$rigs" value="$rig">
+						<div class="structItem structItem--middle">
+							<div class="structItem-cell structItem-cell--main">
+								<h3 class="structItem-title">{$rig.rig_name}</h3>
+								<div class="structItem-minor">
+									<xf:if is="$rig.rig_description">
+										<div>{$rig.rig_description}</div>
+									</xf:if>
+									<ul class="listInline listInline--bullet">
+										<li><strong>Output:</strong> {{number($rig.hash_rate, 6)}} BTC/hour ({{number($rig.daily_output, 4)}} BTC/day)</li>
+										<li><strong>Power Cost:</strong> ${{number($rig.power_consumption, 2)}}/day</li>
+										<li><strong>Durability:</strong> {{number($rig.durability_max)}} days</li>
+										<li><strong>Daily Profit:</strong> ~${{number($rig.daily_profit_base, 2)}}</li>
+										<li><strong>ROI:</strong> {{number($rig.roi_days)}} days</li>
+									</ul>
+								</div>
+							</div>
+							<div class="structItem-cell structItem-cell--meta">
+								<div class="structItem-minor"><strong>{{number($rig.base_cost)}} credits</strong></div>
+								<xf:if is="$visitor.user_id">
+									<xf:if is="$rig.canPurchase($visitor)">
+										<a href="{{link('crypto-mining/shop/buy', $rig)}}" class="button button--cta">Purchase</a>
+									<xf:elseif is="$visitor.level < $rig.required_level" />
+										<div class="structItem-minor"><em>Requires level {{number($rig.required_level)}}</em></div>
+									<xf:else />
+										<div class="structItem-minor"><em>Insufficient credits</em></div>
+									</xf:if>
 								</xf:if>
-								<ul class="listInline listInline--bullet">
-									<li><strong>Output:</strong> {{number($rig.hash_rate, 6)}} BTC/hour ({{number($rig.daily_output, 4)}} BTC/day)</li>
-									<li><strong>Power Cost:</strong> ${{number($rig.power_consumption, 2)}}/day</li>
-									<li><strong>Durability:</strong> {{number($rig.durability_max)}} days</li>
-									<li><strong>Daily Profit:</strong> ~${{number($rig.daily_profit_base, 2)}}</li>
-									<li><strong>ROI:</strong> {{number($rig.roi_days)}} days</li>
-								</ul>
 							</div>
 						</div>
-						<div class="structItem-cell structItem-cell--meta">
-							<div class="structItem-minor"><strong>{{number($rig.base_cost)}} credits</strong></div>
-							<xf:if is="$visitor.user_id">
-								<xf:if is="$rig.canPurchase($visitor)">
-									<a href="{{link('crypto-mining/shop/buy', $rig)}}" class="button button--cta">Purchase</a>
-								<xf:elseif is="$visitor.level < $rig.required_level" />
-									<div class="structItem-minor"><em>Requires level {{number($rig.required_level)}}</em></div>
-								<xf:else />
-									<div class="structItem-minor"><em>Insufficient credits</em></div>
-								</xf:if>
-							</xf:if>
-						</div>
-					</div>
-				</xf:foreach>
-			</div>
-		</xf:if>
-		
-		<!-- Tier 2: Consumer Grade -->
-		<xf:if is="count($rigsByTier[2]) > 0">
-			<div class="block-header">
-				<h2 class="block-tabHeader-title">💰 Tier 2: Consumer Grade</h2>
-			</div>
-			<div class="structItemContainer">
-				<xf:foreach loop="$rigsByTier[2]" value="$rig">
-					<div class="structItem structItem--middle">
-						<div class="structItem-cell structItem-cell--main">
-							<h3 class="structItem-title">{$rig.rig_name}</h3>
-							<div class="structItem-minor">
-								<xf:if is="$rig.rig_description">
-									<div>{$rig.rig_description}</div>
-								</xf:if>
-								<ul class="listInline listInline--bullet">
-									<li><strong>Output:</strong> {{number($rig.hash_rate, 6)}} BTC/hour ({{number($rig.daily_output, 4)}} BTC/day)</li>
-									<li><strong>Power Cost:</strong> ${{number($rig.power_consumption, 2)}}/day</li>
-									<li><strong>Durability:</strong> {{number($rig.durability_max)}} days</li>
-									<li><strong>Daily Profit:</strong> ~${{number($rig.daily_profit_base, 2)}}</li>
-									<li><strong>ROI:</strong> {{number($rig.roi_days)}} days</li>
-								</ul>
-							</div>
-						</div>
-						<div class="structItem-cell structItem-cell--meta">
-							<div class="structItem-minor"><strong>{{number($rig.base_cost)}} credits</strong></div>
-							<xf:if is="$visitor.user_id">
-								<xf:if is="$rig.canPurchase($visitor)">
-									<a href="{{link('crypto-mining/shop/buy', $rig)}}" class="button button--cta">Purchase</a>
-								<xf:elseif is="$visitor.level < $rig.required_level" />
-									<div class="structItem-minor"><em>Requires level {{number($rig.required_level)}}</em></div>
-								<xf:else />
-									<div class="structItem-minor"><em>Insufficient credits</em></div>
-								</xf:if>
-							</xf:if>
-						</div>
-					</div>
-				</xf:foreach>
-			</div>
-		</xf:if>
-		
-		<!-- Tier 3: Professional -->
-		<xf:if is="count($rigsByTier[3]) > 0">
-			<div class="block-header">
-				<h2 class="block-tabHeader-title">💎 Tier 3: Professional</h2>
-			</div>
-			<div class="structItemContainer">
-				<xf:foreach loop="$rigsByTier[3]" value="$rig">
-					<div class="structItem structItem--middle">
-						<div class="structItem-cell structItem-cell--main">
-							<h3 class="structItem-title">{$rig.rig_name}</h3>
-							<div class="structItem-minor">
-								<xf:if is="$rig.rig_description">
-									<div>{$rig.rig_description}</div>
-								</xf:if>
-								<ul class="listInline listInline--bullet">
-									<li><strong>Output:</strong> {{number($rig.hash_rate, 6)}} BTC/hour ({{number($rig.daily_output, 4)}} BTC/day)</li>
-									<li><strong>Power Cost:</strong> ${{number($rig.power_consumption, 2)}}/day</li>
-									<li><strong>Durability:</strong> {{number($rig.durability_max)}} days</li>
-									<li><strong>Daily Profit:</strong> ~${{number($rig.daily_profit_base, 2)}}</li>
-									<li><strong>ROI:</strong> {{number($rig.roi_days)}} days</li>
-								</ul>
-							</div>
-						</div>
-						<div class="structItem-cell structItem-cell--meta">
-							<div class="structItem-minor"><strong>{{number($rig.base_cost)}} credits</strong></div>
-							<xf:if is="$visitor.user_id">
-								<xf:if is="$rig.canPurchase($visitor)">
-									<a href="{{link('crypto-mining/shop/buy', $rig)}}" class="button button--cta">Purchase</a>
-								<xf:elseif is="$visitor.level < $rig.required_level" />
-									<div class="structItem-minor"><em>Requires level {{number($rig.required_level)}}</em></div>
-								<xf:else />
-									<div class="structItem-minor"><em>Insufficient credits</em></div>
-								</xf:if>
-							</xf:if>
-						</div>
-					</div>
-				</xf:foreach>
-			</div>
-		</xf:if>
-		
-		<!-- Tier 4: Elite -->
-		<xf:if is="count($rigsByTier[4]) > 0">
-			<div class="block-header">
-				<h2 class="block-tabHeader-title">🏆 Tier 4: Elite</h2>
-			</div>
-			<div class="structItemContainer">
-				<xf:foreach loop="$rigsByTier[4]" value="$rig">
-					<div class="structItem structItem--middle">
-						<div class="structItem-cell structItem-cell--main">
-							<h3 class="structItem-title">{$rig.rig_name}</h3>
-							<div class="structItem-minor">
-								<xf:if is="$rig.rig_description">
-									<div>{$rig.rig_description}</div>
-								</xf:if>
-								<ul class="listInline listInline--bullet">
-									<li><strong>Output:</strong> {{number($rig.hash_rate, 6)}} BTC/hour ({{number($rig.daily_output, 4)}} BTC/day)</li>
-									<li><strong>Power Cost:</strong> ${{number($rig.power_consumption, 2)}}/day</li>
-									<li><strong>Durability:</strong> {{number($rig.durability_max)}} days</li>
-									<li><strong>Daily Profit:</strong> ~${{number($rig.daily_profit_base, 2)}}</li>
-									<li><strong>ROI:</strong> {{number($rig.roi_days)}} days</li>
-								</ul>
-							</div>
-						</div>
-						<div class="structItem-cell structItem-cell--meta">
-							<div class="structItem-minor"><strong>{{number($rig.base_cost)}} credits</strong></div>
-							<xf:if is="$visitor.user_id">
-								<xf:if is="$rig.canPurchase($visitor)">
-									<a href="{{link('crypto-mining/shop/buy', $rig)}}" class="button button--cta">Purchase</a>
-								<xf:elseif is="$visitor.level < $rig.required_level" />
-									<div class="structItem-minor"><em>Requires level {{number($rig.required_level)}}</em></div>
-								<xf:else />
-									<div class="structItem-minor"><em>Insufficient credits</em></div>
-								</xf:if>
-							</xf:if>
-						</div>
-					</div>
-				</xf:foreach>
-			</div>
-		</xf:if>
+					</xf:foreach>
+				</div>
+			</xf:if>
+		</xf:foreach>
 	</div>
 </div>]]></template>
 
