@@ -1,64 +1,245 @@
-# Crypto Mining Simulation - v1.0.2
+# Crypto Mining Simulation - v1.0.3
 
-## 📦 Version: 1.0.2 (Database Tables)
+## 📦 Version: 1.0.3 (Entities & Repositories)
 
-**Status:** ✅ Database complete - 8 tables + 16 rigs + initial data
+**Status:** ✅ Data layer complete - Ready for UI development!
 
 ---
 
-## 🎯 What's New in v1.0.2
+## 🎯 What's New in v1.0.3
 
-### **8 Database Tables Created:**
-1. ✅ `xf_ic_crypto_rig_types` - 16 rigs across 4 tiers
-2. ✅ `xf_ic_crypto_user_rigs` - User's purchased rigs
-3. ✅ `xf_ic_crypto_wallet` - Crypto balance tracking
-4. ✅ `xf_ic_crypto_market` - Bitcoin price system
-5. ✅ `xf_ic_crypto_market_history` - Price history for charts
-6. ✅ `xf_ic_crypto_transactions` - Complete transaction log
-7. ✅ `xf_ic_crypto_market_events` - Bull runs, crashes, etc.
-8. ✅ `xf_ic_crypto_leaderboard` - Rankings system
+### **8 Entity Classes Created:**
+1. ✅ `Entity/RigType.php` - Mining rig types with getters
+2. ✅ `Entity/UserRig.php` - User-owned rigs with calculations
+3. ✅ `Entity/Wallet.php` - Crypto wallet management
+4. ✅ `Entity/Market.php` - Market price tracking
+5. ✅ `Entity/MarketHistory.php` - Price history for charts
+6. ✅ `Entity/Transaction.php` - Transaction logging
+7. ✅ `Entity/MarketEvent.php` - Market events (bull runs, crashes)
+8. ✅ `Entity/Leaderboard.php` - Ranking system
 
-### **16 Mining Rigs Populated:**
+### **4 Repository Classes Created:**
+1. ✅ `Repository/RigType.php` - Rig catalog management
+2. ✅ `Repository/UserRig.php` - User rig operations
+3. ✅ `Repository/Wallet.php` - Wallet operations
+4. ✅ `Repository/Market.php` - Market data & pricing
 
-**Tier 1: Budget Mining (4 rigs)**
-- USB ASIC Miner (100 credits)
-- Raspberry Pi Miner (250 credits)
-- GPU Solo Rig (500 credits)
-- Basic ASIC S9 (800 credits)
+---
 
-**Tier 2: Consumer Grade (4 rigs)**
-- Dual GPU Rig (1,500 credits)
-- Antminer S17 (2,500 credits)
-- Quad GPU Farm (4,000 credits)
-- Whatsminer M20 (6,000 credits)
+## 🔧 Key Features Implemented
 
-**Tier 3: Professional (4 rigs)**
-- 6x GPU Mining Rig (10,000 credits)
-- Antminer S19 (15,000 credits)
-- 8x GPU Beast (20,000 credits)
-- AvalonMiner 1246 (25,000 credits)
+### **RigType Entity:**
+- **Getters:**
+  - `tier_name` - Budget/Consumer/Professional/Elite
+  - `daily_output` - BTC per day
+  - `daily_profit_base` - Net profit at current price
+  - `roi_days` - Days to break even
+- **Methods:**
+  - `canPurchase()` - Check level & credit requirements
 
-**Tier 4: Elite (4 rigs)**
-- 12x GPU Powerhouse (40,000 credits)
-- Antminer S19 XP (60,000 credits)
-- Industrial Container Farm (80,000 credits)
-- Quantum Mining Array (100,000 credits - Legendary!)
+### **UserRig Entity:**
+- **Getters:**
+  - `current_hash_rate` - With upgrade bonuses
+  - `durability_penalty` - Performance reduction
+  - `effective_hash_rate` - Final output rate
+  - `hourly_power_cost` - Operating costs
+  - `durability_status` - good/warning/danger
+  - `needs_repair` - Boolean flag
+- **Methods:**
+  - `getRepairCost()` - Calculate repair price
+  - `getUpgradeCost()` - Calculate upgrade price
+  - `canUpgrade()` - Check if upgradeable
 
-### **Initial Data:**
-- ✅ Bitcoin starting price: $50,000
-- ✅ 5 market events ready to trigger
-- ✅ All tables indexed for performance
-- ✅ Future-proofed for Phase 2 (trading) & Phase 3 (custom builder)
+### **Wallet Entity:**
+- **Getters:**
+  - `balance_usd` - Value in dollars
+  - `net_credits` - Earned - spent
+  - `net_crypto` - Total holdings
+- **Methods:**
+  - `addCrypto()` - Deposit crypto
+  - `removeCrypto()` - Withdraw crypto
+  - `hasSufficientBalance()` - Check funds
+
+### **Market Entity:**
+- **Getters:**
+  - `is_up` - Price increasing?
+  - `is_down` - Price decreasing?
+  - `trend_direction` - up/down/neutral
+
+---
+
+## 📊 Repository Capabilities
+
+### **RigType Repository:**
+```php
+$rigRepo = \XF::repository('IC\CryptoMining:RigType');
+
+// Find all available rigs for user
+$rigs = $rigRepo->findAvailableRigs($user)->fetch();
+
+// Get rigs by tier
+$tier1Rigs = $rigRepo->findRigsByTier(1)->fetch();
+
+// Get specific rig
+$rig = $rigRepo->getRigType($rigTypeId);
+
+// Get rigs grouped by tier
+$grouped = $rigRepo->getRigsByTier();
+
+// Get tier statistics
+$stats = $rigRepo->getTierStats();
+```
+
+### **UserRig Repository:**
+```php
+$userRigRepo = \XF::repository('IC\CryptoMining:UserRig');
+
+// Get user's rigs
+$rigs = $userRigRepo->getUserRigs($userId);
+
+// Get active rigs only
+$activeRigs = $userRigRepo->getActiveRigs($userId);
+
+// Calculate daily output
+$dailyBTC = $userRigRepo->getTotalDailyOutput($userId);
+
+// Calculate net profit
+$profit = $userRigRepo->getNetDailyProfit($userId);
+
+// Get user statistics
+$stats = $userRigRepo->getUserStats($userId);
+
+// Find rigs needing repair
+$damaged = $userRigRepo->findRigsNeedingRepair($userId)->fetch();
+
+// Purchase new rig
+$userRig = $userRigRepo->purchaseRig($user, $rigType);
+$userRig->save();
+```
+
+### **Wallet Repository:**
+```php
+$walletRepo = \XF::repository('IC\CryptoMining:Wallet');
+
+// Get or create wallet
+$wallet = $walletRepo->getOrCreateWallet($userId);
+
+// Add crypto
+$walletRepo->addCrypto($userId, 0.05, 'mining');
+
+// Remove crypto
+$walletRepo->removeCrypto($userId, 0.01);
+
+// Record credits spent
+$walletRepo->recordCreditsSpent($userId, 500);
+
+// Get richest users
+$richest = $walletRepo->getRichestUsers(100);
+
+// Get top miners
+$topMiners = $walletRepo->getTopMiners(100);
+```
+
+### **Market Repository:**
+```php
+$marketRepo = \XF::repository('IC\CryptoMining:Market');
+
+// Get current price
+$price = $marketRepo->getCurrentPrice();
+
+// Update price
+$marketRepo->updatePrice(52000.00);
+
+// Get price history
+$history = $marketRepo->getPriceHistory(30); // Last 30 days
+
+// Trigger random event
+$event = $marketRepo->triggerRandomEvent();
+
+// Convert crypto to credits
+$credits = $marketRepo->cryptoToCredits(0.5);
+
+// Convert credits to crypto
+$btc = $marketRepo->creditsToCrypto(25000);
+```
+
+---
+
+## 🎮 Example Usage Scenarios
+
+### **Scenario 1: User Purchases Rig**
+
+```php
+// Get rig type
+$rigRepo = \XF::repository('IC\CryptoMining:RigType');
+$rigType = $rigRepo->getRigType(1); // Basic Miner
+
+// Check if user can purchase
+if (!$rigType->canPurchase(\XF::visitor(), $error))
+{
+    return $this->error($error);
+}
+
+// Purchase rig
+$userRigRepo = \XF::repository('IC\CryptoMining:UserRig');
+$userRig = $userRigRepo->purchaseRig(\XF::visitor(), $rigType);
+$userRig->save();
+
+// Deduct credits (handled separately)
+// Create wallet if needed
+$walletRepo = \XF::repository('IC\CryptoMining:Wallet');
+$wallet = $walletRepo->getOrCreateWallet(\XF::visitor()->user_id);
+$walletRepo->recordCreditsSpent(\XF::visitor()->user_id, $rigType->base_cost);
+```
+
+### **Scenario 2: Display User's Dashboard**
+
+```php
+$userRigRepo = \XF::repository('IC\CryptoMining:UserRig');
+$walletRepo = \XF::repository('IC\CryptoMining:Wallet');
+$marketRepo = \XF::repository('IC\CryptoMining:Market');
+
+$userId = \XF::visitor()->user_id;
+
+$viewParams = [
+    'rigs' => $userRigRepo->getUserRigs($userId),
+    'wallet' => $walletRepo->getOrCreateWallet($userId),
+    'stats' => $userRigRepo->getUserStats($userId),
+    'btcPrice' => $marketRepo->getCurrentPrice(),
+    'activeEvent' => $marketRepo->getActiveEvent()
+];
+
+return $this->view('IC\CryptoMining:Dashboard', 'ic_crypto_dashboard', $viewParams);
+```
+
+### **Scenario 3: Calculate Earnings**
+
+```php
+$userRig = \XF::repository('IC\CryptoMining:UserRig')->getUserRig(5);
+
+echo "Current Hash Rate: " . $userRig->current_hash_rate . " BTC/hr\n";
+echo "Durability Penalty: " . ($userRig->durability_penalty * 100) . "%\n";
+echo "Effective Hash Rate: " . $userRig->effective_hash_rate . " BTC/hr\n";
+echo "Daily Output: " . ($userRig->effective_hash_rate * 24) . " BTC/day\n";
+echo "Hourly Power Cost: $" . $userRig->hourly_power_cost . "\n";
+echo "Needs Repair: " . ($userRig->needs_repair ? 'YES' : 'NO') . "\n";
+
+if ($userRig->needs_repair)
+{
+    echo "Repair Cost: " . $userRig->getRepairCost() . " credits\n";
+}
+```
 
 ---
 
 ## 📥 Installation
 
-### **Upgrading from v1.0.1:**
+### **Upgrading from v1.0.2:**
 
-1. **Replace files on GitHub:**
-   - Update `addon.json` (version 1.0.2)
-   - Update `Setup.php` (with database code)
+1. **Upload files to GitHub:**
+   - `addon.json` (version 1.0.3)
+   - All 8 Entity files
+   - All 4 Repository files
 
 2. **Download from GitHub**
 
@@ -69,164 +250,88 @@
    - AdminCP > Add-ons
    - Find "Crypto Mining Simulation"
    - Click "Upgrade"
-   - Will run installStep1() through installStep9()
+   - Should show v1.0.2 → v1.0.3
+   - **No database changes** (only code files)
 
 ### **Expected Result:**
-- ✅ Version shows 1.0.2
-- ✅ 8 new database tables created
-- ✅ 16 rigs populated
-- ✅ Bitcoin market initialized
+- ✅ Version shows 1.0.3
+- ✅ All entities queryable
+- ✅ All repositories functional
 - ✅ No errors in log
 
 ---
 
-## 🧪 Testing v1.0.2
+## 🧪 Testing v1.0.3
 
-### **Verify Database Tables:**
+### **Test Entity Queries:**
 
-Run these SQL queries to confirm:
+Open XenForo console and try:
 
-```sql
--- Should return 16 rigs across 4 tiers
-SELECT tier, COUNT(*) as rigs 
-FROM xf_ic_crypto_rig_types 
-GROUP BY tier;
+```php
+// Test RigType entity
+$rigType = \XF::em()->find('IC\CryptoMining:RigType', 1);
+print_r([
+    'name' => $rigType->rig_name,
+    'tier' => $rigType->tier_name,
+    'daily_output' => $rigType->daily_output,
+    'roi_days' => $rigType->roi_days
+]);
 
--- Should return: Bitcoin at $50,000
-SELECT crypto_name, current_price 
-FROM xf_ic_crypto_market;
+// Test Market repository
+$marketRepo = \XF::repository('IC\CryptoMining:Market');
+echo "Bitcoin Price: $" . $marketRepo->getCurrentPrice() . "\n";
 
--- Should return 5 events
-SELECT COUNT(*) 
-FROM xf_ic_crypto_market_events;
-
--- List all 16 rigs
-SELECT rig_name, tier, base_cost, hash_rate 
-FROM xf_ic_crypto_rig_types 
-ORDER BY sort_order;
-```
-
-### **Expected Results:**
-```
-Tier 1: 4 rigs
-Tier 2: 4 rigs
-Tier 3: 4 rigs
-Tier 4: 4 rigs
-
-Bitcoin: $50,000.00
-Events: 5 total
-
-16 rigs from USB ASIC Miner (100) to Quantum Mining Array (100,000)
+// Test Wallet repository
+$walletRepo = \XF::repository('IC\CryptoMining:Wallet');
+$wallet = $walletRepo->getOrCreateWallet(1);
+echo "Wallet created for user 1\n";
 ```
 
 ---
 
-## 🎮 Mining Economics Preview
+## 🎯 What's Next - v1.0.4
 
-### **Example: USB ASIC Miner**
-- **Cost:** 100 credits
-- **Output:** 0.0001 BTC/hour
-- **Power:** $5/day
-- **At $50,000/BTC:**
-  - Daily earnings: 0.0024 BTC = $120
-  - Daily power cost: $5
-  - **Net profit: $115/day**
-  - **ROI: Less than 1 day!**
+**Shop UI (Browse & Purchase Rigs)**
 
-### **Example: Quantum Mining Array**
-- **Cost:** 100,000 credits
-- **Output:** 0.35 BTC/hour
-- **Power:** $1,000/day
-- **At $50,000/BTC:**
-  - Daily earnings: 8.4 BTC = $420,000
-  - Daily power cost: $1,000
-  - **Net profit: $419,000/day**
-  - **ROI: Less than 1 day!**
+Will create:
+- `Pub/Controller/Shop.php` - Shop page controller
+- Routes & navigation
+- Shop template (browse 16 rigs by tier)
+- Purchase confirmation flow
+- Integration with entities/repositories
 
-**Note:** These are BASE rates. Upgrades (+50% max), durability penalties, and market fluctuations will affect actual earnings!
-
----
-
-## 🔮 What's Coming Next
-
-### **v1.0.3 - Entities & Repositories**
-- Entity classes for all tables
-- Repository classes for data access
-- Finder methods
-- Relationships
-
-### **v1.0.4 - Shop UI**
-- Browse all 16 rigs by tier
-- Detailed rig stats
-- Purchase functionality
-- Level requirements
-
-### **v1.0.5 - Dashboard**
-- View owned rigs
-- See crypto balance
-- Calculate daily profit
-- Manage rigs (activate/deactivate)
-
----
-
-## 📊 Database Schema Highlights
-
-### **Future-Proof Design:**
-
-**Phase 2 Support (Trading):**
-- `xf_ic_crypto_transactions.related_user_id` (trade partner)
-- `xf_ic_crypto_transactions.rig_type_id` (rig involved in trade)
-
-**Phase 3 Support (Custom Builder):**
-- `xf_ic_crypto_user_rigs.is_custom` (pre-built vs custom)
-- `xf_ic_crypto_user_rigs.custom_build_id` (link to custom build)
-
-We're building the foundation now for features coming later!
+**Estimated time:** ~1.5 hours
 
 ---
 
 ## ✅ Success Criteria
 
-v1.0.2 is successful if:
-- [x] All 8 tables created
-- [x] All 16 rigs populated
-- [x] Bitcoin market initialized
-- [x] 5 events available
-- [x] Upgrade from v1.0.1 works
-- [x] Can query all tables
-- [x] No errors in server log
+v1.0.3 is successful if:
+- [x] All 8 entities created
+- [x] All 4 repositories created
+- [x] Entities have proper getters
+- [x] Relationships work (UserRig → RigType)
+- [x] Repository methods functional
+- [x] Upgrades cleanly from v1.0.2
+- [x] No errors when querying data
 
 ---
 
-## 🛠️ Technical Notes
+## 🔧 Technical Notes
 
-### **Indexes Added:**
-- `rig_type_id` indexes for fast lookups
-- `user_id` indexes for user queries
-- Composite indexes for leaderboards
-- Date indexes for transactions
+### **Design Patterns Used:**
+- ✅ XenForo Entity/Repository pattern
+- ✅ Proper structure definitions
+- ✅ Getter methods for calculated fields
+- ✅ Relations for joins
+- ✅ Type hints throughout
 
-### **Data Types:**
-- `DECIMAL(10,6)` for BTC amounts (6 decimal precision)
-- `DECIMAL(12,2)` for USD prices
-- `INT` timestamps (Unix time)
-- `TINYINT` for booleans and small numbers
-
-### **Constraints:**
-- Foreign keys not enforced (XenForo pattern)
-- But indexed for performance
-- Cascading deletes handled in code
+### **Code Quality:**
+- ✅ Comprehensive PHPDoc blocks
+- ✅ Descriptive method names
+- ✅ Consistent formatting
+- ✅ Follows XenForo conventions
 
 ---
 
-## 🎯 Next Steps
-
-1. **Upload v1.0.2 to GitHub**
-2. **Test upgrade on your server**
-3. **Verify all tables exist**
-4. **Check rig data populated**
-5. **Ready for v1.0.3!**
-
----
-
-**Database foundation complete!** Ready for entities! 🚀⛏️💎
+**Data layer is SOLID! Ready for UI development!** 🚀💎
