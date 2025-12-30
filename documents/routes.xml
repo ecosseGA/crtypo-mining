@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="permissions" sub_name="xa-ams-categories" format="xa-ams-categories/:int&lt;category_id,title&gt;/" controller="XenAddons\AMS:Permission" context="xaAmsCategoryPermissions" action_prefix="category"/>
+  <route route_type="admin" route_prefix="xa-ams" controller="XenAddons\AMS:ArticleItem" context="xa_ams"/>
+  <route route_type="admin" route_prefix="xa-ams" sub_name="article-fields" format="article-fields/:str&lt;field_id&gt;/" controller="XenAddons\AMS:ArticleField" context="xa_amsArticleFields"/>
+  <route route_type="admin" route_prefix="xa-ams" sub_name="categories" format="categories/:int&lt;category_id,title&gt;/" controller="XenAddons\AMS:Category" context="xa_amsCategories"/>
+  <route route_type="admin" route_prefix="xa-ams" sub_name="feeds" format="feeds/:int&lt;feed_id,title&gt;/" controller="XenAddons\AMS:Feed" context="xa_amsFeeds"/>
+  <route route_type="admin" route_prefix="xa-ams" sub_name="prefixes" format="prefixes/:int&lt;prefix_id,title&gt;/" controller="XenAddons\AMS:ArticlePrefix" context="xa_amsPrefixes"/>
+  <route route_type="admin" route_prefix="xa-ams" sub_name="prefixes/group" format="prefixes/group/:int&lt;prefix_group_id,title&gt;/" controller="XenAddons\AMS:ArticlePrefix" context="xa_amsPrefixes" action_prefix="group"/>
+  <route route_type="admin" route_prefix="xa-ams" sub_name="prompts" format="prompts/:int&lt;prompt_id,title&gt;/" controller="XenAddons\AMS:ArticlePrompt" context="xa_amsPrompts"/>
+  <route route_type="admin" route_prefix="xa-ams" sub_name="prompts/group" format="prompts/group/:int&lt;prompt_group_id,title&gt;/" controller="XenAddons\AMS:ArticlePrompt" context="xa_amsPrompts" action_prefix="group"/>
+  <route route_type="admin" route_prefix="xa-ams" sub_name="reply-bans" format="reply-bans/:int&lt;article_reply_ban_id&gt;/" controller="XenAddons\AMS:ArticleItem" context="xa_amsReplyBans" action_prefix="replyBans"/>
+  <route route_type="admin" route_prefix="xa-ams" sub_name="review-fields" format="review-fields/:str&lt;field_id&gt;/" controller="XenAddons\AMS:ReviewField" context="xa_amsReviewFields"/>
+  <route route_type="admin" route_prefix="xa-ams-article-replace" controller="XenAddons\AMS:ArticleReplace" context="xa_ams"/>
+  <route route_type="public" route_prefix="ams" format=":int&lt;article_id,title&gt;/" controller="XenAddons\AMS:ArticleItem" context="xa_ams"/>
+  <route route_type="public" route_prefix="ams" sub_name="article-comments" format="article-comments/:int&lt;article_id,title&gt;/" controller="XenAddons\AMS:ArticleComment" context="xa_ams"/>
+  <route route_type="public" route_prefix="ams" sub_name="authors" format="authors/:int&lt;user_id,username&gt;/" controller="XenAddons\AMS:Author" context="xa_ams"/>
+  <route route_type="public" route_prefix="ams" sub_name="categories" format="categories/:int&lt;category_id,title&gt;/" controller="XenAddons\AMS:Category" context="xa_ams"/>
+  <route route_type="public" route_prefix="ams" sub_name="comments" format="comments/:int&lt;comment_id&gt;/" controller="XenAddons\AMS:Comment" context="xa_ams"/>
+  <route route_type="public" route_prefix="ams" sub_name="dialog" format="dialog/" controller="XenAddons\AMS:ArticleItem" context="xa_ams" action_prefix="dialog"/>
+  <route route_type="public" route_prefix="ams" sub_name="page" format=":+int&lt;article_id,article_title&gt;/page/:+int&lt;page_id,title&gt;/" controller="XenAddons\AMS:ArticlePage" context="xa_ams"/>
+  <route route_type="public" route_prefix="ams" sub_name="review" format=":+int&lt;article_id,article_title&gt;/review/:+int&lt;rating_id&gt;/" controller="XenAddons\AMS:ArticleReview" context="xa_ams"/>
+  <route route_type="public" route_prefix="ams" sub_name="series" format="series/:int&lt;series_id,title&gt;/" controller="XenAddons\AMS:Series" context="xa_ams"/>
+  <route route_type="public" route_prefix="ams" sub_name="series-part" format="series-part/:int&lt;series_part_id,title&gt;/" controller="XenAddons\AMS:SeriesPart" context="xa_ams"/>
+  <route route_type="public" route_prefix="whats-new" sub_name="ams-articles" format="ams-articles/:int&lt;find_new_id&gt;/:page" controller="XenAddons\AMS:WhatsNewArticle" context="xa_ams"/>
+  <route route_type="public" route_prefix="whats-new" sub_name="ams-comments" format="ams-comments/:int&lt;find_new_id&gt;/:page" controller="XenAddons\AMS:WhatsNewComment" context="xa_ams"/>
+</routes>

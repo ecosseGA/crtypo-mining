@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="xaAmsArticleReplace" parent_navigation_id="xa_ams" display_order="2100" link="xa-ams-article-replace" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xaAmsCategoryPermissions" parent_navigation_id="permissions" display_order="430" link="permissions/xa-ams-categories" admin_permission_id="articleManagementSystem" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xaAmsOptions" parent_navigation_id="xa_ams" display_order="5000" link="options/groups/xaAms/" admin_permission_id="articleManagementSystem" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xa_ams" display_order="5741" link="xa-ams" icon="fa-newspaper" admin_permission_id="articleManagementSystem" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xa_amsArticleFields" parent_navigation_id="xa_ams" display_order="400" link="xa-ams/article-fields" admin_permission_id="articleManagementSystem" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xa_amsBatchUpdateArticles" parent_navigation_id="xa_ams" display_order="2000" link="xa-ams/batch-update" admin_permission_id="articleManagementSystem" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xa_amsCategories" parent_navigation_id="xa_ams" display_order="100" link="xa-ams/categories" admin_permission_id="articleManagementSystem" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xa_amsFeeds" parent_navigation_id="xa_ams" display_order="1000" link="xa-ams/feeds" admin_permission_id="articleManagementSystem" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xa_amsPrefixes" parent_navigation_id="xa_ams" display_order="200" link="xa-ams/prefixes" admin_permission_id="articleManagementSystem" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xa_amsPrompts" parent_navigation_id="xa_ams" display_order="300" link="xa-ams/prompts" admin_permission_id="articleManagementSystem" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xa_amsReplyBans" parent_navigation_id="xa_ams" display_order="3000" link="xa-ams/reply-bans" admin_permission_id="articleManagementSystem" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xa_amsReviewFields" parent_navigation_id="xa_ams" display_order="500" link="xa-ams/review-fields" admin_permission_id="articleManagementSystem" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget_positions>
+  <widget_position position_id="xa_ams_article_view_above_article" active="1"/>
+  <widget_position position_id="xa_ams_article_view_below_article" active="1"/>
+  <widget_position position_id="xa_ams_category_above_articles" active="1"/>
+  <widget_position position_id="xa_ams_category_below_articles" active="1"/>
+  <widget_position position_id="xa_ams_category_sidebar" active="1"/>
+  <widget_position position_id="xa_ams_category_sidenav" active="1"/>
+  <widget_position position_id="xa_ams_index_above_articles" active="1"/>
+  <widget_position position_id="xa_ams_index_below_articles" active="1"/>
+  <widget_position position_id="xa_ams_index_sidebar" active="1"/>
+  <widget_position position_id="xa_ams_index_sidenav" active="1"/>
+  <widget_position position_id="xa_ams_modular_index_main" active="1"/>
+  <widget_position position_id="xa_ams_modular_index_sidebar" active="1"/>
+  <widget_position position_id="xa_ams_modular_index_sidenav" active="1"/>
+  <widget_position position_id="xa_ams_series_list_above_series_list" active="1"/>
+  <widget_position position_id="xa_ams_series_list_below_series_list" active="1"/>
+  <widget_position position_id="xa_ams_series_list_sidebar" active="1"/>
+  <widget_position position_id="xa_ams_series_view_above_article_list" active="1"/>
+  <widget_position position_id="xa_ams_series_view_below_article_list" active="1"/>
+</widget_positions>

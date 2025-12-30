@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget_definitions>
+  <widget_definition definition_id="xa_ams_article_page_poll" definition_class="XenAddons\AMS\Widget\ArticlePagePoll"/>
+  <widget_definition definition_id="xa_ams_article_poll" definition_class="XenAddons\AMS\Widget\ArticlePoll"/>
+  <widget_definition definition_id="xa_ams_article_statistics" definition_class="XenAddons\AMS\Widget\ArticlesStatistics"/>
+  <widget_definition definition_id="xa_ams_article_tag_cloud" definition_class="XenAddons\AMS\Widget\ArticleTagCloud"/>
+  <widget_definition definition_id="xa_ams_articles_map" definition_class="XenAddons\AMS\Widget\ArticlesMap"/>
+  <widget_definition definition_id="xa_ams_category_nav" definition_class="XenAddons\AMS\Widget\CategoryNav"/>
+  <widget_definition definition_id="xa_ams_featured_articles" definition_class="XenAddons\AMS\Widget\FeaturedArticles"/>
+  <widget_definition definition_id="xa_ams_featured_series" definition_class="XenAddons\AMS\Widget\FeaturedSeries"/>
+  <widget_definition definition_id="xa_ams_latest_articles" definition_class="XenAddons\AMS\Widget\LatestArticles"/>
+  <widget_definition definition_id="xa_ams_latest_comments" definition_class="XenAddons\AMS\Widget\LatestComments"/>
+  <widget_definition definition_id="xa_ams_latest_reviews" definition_class="XenAddons\AMS\Widget\LatestReviews"/>
+  <widget_definition definition_id="xa_ams_latest_series" definition_class="XenAddons\AMS\Widget\LatestSeries"/>
+  <widget_definition definition_id="xa_ams_series_poll" definition_class="XenAddons\AMS\Widget\SeriesPoll"/>
+</widget_definitions>

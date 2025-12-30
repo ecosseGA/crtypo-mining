@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cron>
+  <entry entry_id="xaAmsCleanUpDaily" cron_class="XenAddons\AMS\Cron\CleanUp" cron_method="runDailyCleanUp" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[3],"minutes":[0]}]]></entry>
+  <entry entry_id="xaAmsCleanUpHourly" cron_class="XenAddons\AMS\Cron\CleanUp" cron_method="runHourlyCleanUp" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[5]}]]></entry>
+  <entry entry_id="xaAmsFailedOsUrlCheck" cron_class="XenAddons\AMS\Cron\OsUrlCheck" cron_method="runFailedOsUrlChecks" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[6]}]]></entry>
+  <entry entry_id="xaAmsFeeder" cron_class="XenAddons\AMS\Cron\Feeder" cron_method="importFeeds" active="0"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[2,12,22,32,42,52]}]]></entry>
+  <entry entry_id="xaAmsOsUrlCheck" cron_class="XenAddons\AMS\Cron\OsUrlCheck" cron_method="runOsUrlChecks" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[20]}]]></entry>
+  <entry entry_id="xaAmsPublisher" cron_class="XenAddons\AMS\Cron\Publisher" cron_method="runPublishScheduledArticles" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[0,10,20,30,40,50]}]]></entry>
+  <entry entry_id="xaAmsViews" cron_class="XenAddons\AMS\Cron\Views" cron_method="runViewUpdate" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[30]}]]></entry>
+  <entry entry_id="xa_amsCacheStats" cron_class="XenAddons\AMS\Cron\Statistics" cron_method="cacheAmsStatistics" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[10,40]}]]></entry>
+</cron>
