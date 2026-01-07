@@ -107,6 +107,7 @@ class Wallet extends Entity
 		$structure->columns = [
 			'wallet_id' => ['type' => self::UINT, 'autoIncrement' => true],
 			'user_id' => ['type' => self::UINT, 'required' => true],
+			'cash_balance' => ['type' => self::UINT, 'default' => 10000], // Starting cash for purchases
 			'crypto_balance' => ['type' => self::FLOAT, 'default' => 0.0],
 			'total_mined' => ['type' => self::FLOAT, 'default' => 0.0],
 			'total_sold' => ['type' => self::FLOAT, 'default' => 0.0],

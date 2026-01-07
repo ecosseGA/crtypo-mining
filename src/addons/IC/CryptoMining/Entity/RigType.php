@@ -85,8 +85,13 @@ class RigType extends Entity
 	
 	/**
 	 * Check if user can purchase this rig type
+	 * 
+	 * @param User $user The user attempting purchase
+	 * @param Wallet|null $wallet The user's wallet
+	 * @param string|null $error Error message if cannot purchase
+	 * @return bool
 	 */
-	public function canPurchase(\XF\Entity\User $user, &$error = null): bool
+	public function canPurchase(\XF\Entity\User $user, $wallet = null, &$error = null): bool
 	{
 		// Check if rig is active
 		if (!$this->is_active)
@@ -95,15 +100,8 @@ class RigType extends Entity
 			return false;
 		}
 		
-		// Check level requirement
-		if ($user->level < $this->required_level)
-		{
-			$error = \XF::phrase('ic_crypto_level_required', ['level' => $this->required_level]);
-			return false;
-		}
-		
-		// Check credits
-		if ($user->currency_balance < $this->base_cost)
+		// Check wallet cash balance
+		if (!$wallet || $wallet->cash_balance < $this->base_cost)
 		{
 			$error = \XF::phrase('ic_crypto_insufficient_credits');
 			return false;
