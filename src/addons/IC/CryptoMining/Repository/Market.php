@@ -20,6 +20,14 @@ class Market extends Repository
 	}
 	
 	/**
+	 * Get current market (alias for getMarket)
+	 */
+	public function getCurrentMarket(string $cryptoName = 'Bitcoin'): ?\IC\CryptoMining\Entity\Market
+	{
+		return $this->getMarket($cryptoName);
+	}
+	
+	/**
 	 * Get current Bitcoin price
 	 */
 	public function getCurrentPrice(string $cryptoName = 'Bitcoin'): float

@@ -18,12 +18,6 @@ class RigType extends Repository
 			->where('is_active', 1)
 			->order('sort_order', 'ASC');
 		
-		// If user provided, filter by level requirement
-		if ($user)
-		{
-			$finder->where('required_level', '<=', $user->level);
-		}
-		
 		return $finder;
 	}
 	
