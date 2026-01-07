@@ -11,7 +11,7 @@ use XF\Db\Schema\Alter;
 
 /**
  * Crypto Mining Simulation - Setup
- * Version: 1.0.2 (Database Tables)
+ * Version: 1.6.0 (Feature #7: Leaderboards)
  */
 class Setup extends AbstractSetup
 {
@@ -153,7 +153,7 @@ class Setup extends AbstractSetup
 			$table->addColumn('user_id', 'int');
 			$table->addColumn('transaction_type', 'varchar', 50); // buy_rig, sell_crypto, buy_crypto, repair, upgrade, power_cost, mining_reward, trade_buy, trade_sell, scrapyard_dump, scrapyard_claim
 			$table->addColumn('amount', 'decimal', '12,6')->nullable(); // Crypto amount
-			$table->addColumn('credits', 'int')->nullable(); // Forum currency
+			$table->addColumn('credits', 'int')->nullable()->unsigned(false); // Forum currency (can be negative for costs!)
 			$table->addColumn('price_per_unit', 'decimal', '12,2')->nullable(); // USD per BTC at time
 			$table->addColumn('description', 'text')->nullable();
 			$table->addColumn('transaction_date', 'int');
@@ -512,6 +512,818 @@ class Setup extends AbstractSetup
 		]);
 	}
 	
+	/**
+	 * Step 10: Create blocks table for competition system
+	 */
+	public function installStep10()
+	{
+		$this->schemaManager()->createTable('xf_ic_crypto_blocks', function(Create $table)
+		{
+			$table->addColumn('block_id', 'int')->autoIncrement();
+			$table->addColumn('block_number', 'int')->setDefault(0);
+			$table->addColumn('block_reward', 'decimal', '10,6')->setDefault(0.01);
+			$table->addColumn('total_hashrate', 'decimal', '12,6')->setDefault(0);
+			$table->addColumn('winner_user_id', 'int')->nullable();
+			$table->addColumn('winner_rig_id', 'int')->nullable();
+			$table->addColumn('solved_date', 'int')->nullable();
+			$table->addColumn('spawned_date', 'int')->setDefault(0);
+			$table->addColumn('is_solved', 'tinyint')->setDefault(0);
+			
+			$table->addPrimaryKey('block_id');
+			$table->addKey(['is_solved']);
+			$table->addKey(['solved_date']);
+			$table->addKey(['block_number']);
+		});
+		
+		// Create initial block
+		$this->db()->insert('xf_ic_crypto_blocks', [
+			'block_number' => 1,
+			'block_reward' => 0.01,
+			'total_hashrate' => 0,
+			'spawned_date' => \XF::$time,
+			'is_solved' => 0
+		]);
+	}
+	
+	/**
+	 * Step 11: Create mining grid state table
+	 * Stores current state of 10x10 expedition grid (100 blocks)
+	 */
+	public function installStep11()
+	{
+		$this->schemaManager()->createTable('xf_ic_crypto_grid_state', function(Create $table)
+		{
+			$table->addColumn('grid_block_id', 'int')->autoIncrement();
+			$table->addColumn('generation_id', 'int')->setDefault(1);
+			$table->addColumn('position', 'tinyint')->setDefault(0); // 0-99 (10x10 grid)
+			$table->addColumn('block_type', 'enum', ['jackpot', 'rich_vein', 'standard', 'weak_vein', 'collapse']);
+			$table->addColumn('btc_value', 'decimal', '10,6')->setDefault(0);
+			$table->addColumn('durability_cost', 'decimal', '5,2')->setDefault(0);
+			$table->addColumn('is_mined', 'tinyint')->setDefault(0);
+			$table->addColumn('mined_by_user_id', 'int')->nullable();
+			$table->addColumn('mined_date', 'int')->nullable();
+			
+			$table->addPrimaryKey('grid_block_id');
+			$table->addKey(['generation_id', 'position']);
+			$table->addKey(['is_mined']);
+		});
+	}
+	
+	/**
+	 * Step 12: Create grid generations table
+	 * Tracks each grid cycle (regenerates every 6 hours)
+	 */
+	public function installStep12()
+	{
+		$this->schemaManager()->createTable('xf_ic_crypto_grid_generations', function(Create $table)
+		{
+			$table->addColumn('generation_id', 'int')->autoIncrement();
+			$table->addColumn('created_date', 'int')->setDefault(0);
+			$table->addColumn('ended_date', 'int')->nullable();
+			$table->addColumn('total_mined', 'int')->setDefault(0);
+			$table->addColumn('total_jackpots', 'int')->setDefault(0);
+			$table->addColumn('total_collapses', 'int')->setDefault(0);
+			$table->addColumn('is_active', 'tinyint')->setDefault(1);
+			
+			$table->addPrimaryKey('generation_id');
+			$table->addKey(['is_active']);
+			$table->addKey(['created_date']);
+		});
+	}
+	
+	/**
+	 * Step 13: Create grid mining history table
+	 * Records every mining attempt for stats/history
+	 */
+	public function installStep13()
+	{
+		$this->schemaManager()->createTable('xf_ic_crypto_grid_mines', function(Create $table)
+		{
+			$table->addColumn('mine_id', 'int')->autoIncrement();
+			$table->addColumn('user_id', 'int')->setDefault(0);
+			$table->addColumn('rig_id', 'int')->setDefault(0);
+			$table->addColumn('generation_id', 'int')->setDefault(0);
+			$table->addColumn('position', 'tinyint')->setDefault(0);
+			$table->addColumn('block_type', 'enum', ['jackpot', 'rich_vein', 'standard', 'weak_vein', 'collapse']);
+			$table->addColumn('btc_earned', 'decimal', '10,6')->setDefault(0);
+			$table->addColumn('durability_lost', 'decimal', '5,2')->setDefault(0);
+			$table->addColumn('credits_spent', 'int')->setDefault(100); // Base cost
+			$table->addColumn('used_scout', 'tinyint')->setDefault(0);
+			$table->addColumn('used_insurance', 'tinyint')->setDefault(0);
+			$table->addColumn('mined_date', 'int')->setDefault(0);
+			
+			$table->addPrimaryKey('mine_id');
+			$table->addKey(['user_id']);
+			$table->addKey(['generation_id']);
+			$table->addKey(['mined_date']);
+		});
+	}
+	
+	/**
+	 * Step 14: Create user buffs table
+	 * Tracks active buffs (Lucky Pickaxe, etc.)
+	 */
+	public function installStep14()
+	{
+		$this->schemaManager()->createTable('xf_ic_crypto_user_buffs', function(Create $table)
+		{
+			$table->addColumn('buff_id', 'int')->autoIncrement();
+			$table->addColumn('user_id', 'int')->setDefault(0);
+			$table->addColumn('buff_type', 'enum', ['lucky_pickaxe', 'double_rewards', 'iron_will']);
+			$table->addColumn('buff_value', 'decimal', '5,2')->setDefault(0); // e.g., 10 for +10%
+			$table->addColumn('started_date', 'int')->setDefault(0);
+			$table->addColumn('expires_date', 'int')->setDefault(0);
+			$table->addColumn('is_active', 'tinyint')->setDefault(1);
+			
+			$table->addPrimaryKey('buff_id');
+			$table->addKey(['user_id', 'is_active']);
+			$table->addKey(['expires_date']);
+		});
+	}
+	
+	// ==================== UPGRADE STEPS ====================
+	
+	/**
+	 * Upgrade to v1.0.5 - Template and styling improvements
+	 * No database changes needed, just template updates
+	 */
+	public function upgrade1000005Step1()
+	{
+		// Template changes only - XenForo will auto-import from _data
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.0.6 - Complete template rewrite with custom classes
+	 * Removes all XenForo structural dependencies to prevent theme conflicts
+	 */
+	public function upgrade1000006Step1()
+	{
+		// Template changes only - XenForo will auto-import from _data
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.0.7 - Template import fix
+	 * Ensures all three templates (dashboard, shop, buy) get imported
+	 */
+	public function upgrade1000007Step1()
+	{
+		// Template changes only - XenForo will auto-import from _data
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.0.8 - Mining cron system
+	 * Adds passive BTC generation for active rigs
+	 * Cron entry imported from _data/cron_entries.xml
+	 */
+	public function upgrade1000008Step1()
+	{
+		// Cron entry imported automatically from _data
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.0.9 - Cron XML filename fix
+	 * Corrects cron_entries.xml to cron.xml (proper XenForo filename)
+	 */
+	public function upgrade1000009Step1()
+	{
+		// Cron entry imported automatically from _data/cron.xml
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.1.0 - Cron XML structure fix
+	 * Corrects run_rules from attribute to child element (XenForo requirement)
+	 */
+	public function upgrade1001000Step1()
+	{
+		// Cron entry imported automatically from _data/cron.xml
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.1.1 - Cron XML format correction
+	 * Uses proper XenForo cron format: run_rules as text content, not child element
+	 */
+	public function upgrade1001001Step1()
+	{
+		// Cron entry imported automatically from _data/cron.xml
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.1.2 - Fix credits column to allow negative values
+	 * Power costs need to be stored as negative credits
+	 */
+	public function upgrade1001002Step1()
+	{
+		// Change credits column from UNSIGNED to SIGNED to allow negative values
+		$this->schemaManager()->alterTable('xf_ic_crypto_transactions', function(\XF\Db\Schema\Alter $table)
+		{
+			$table->changeColumn('credits', 'int')->nullable()->unsigned(false);
+		});
+		
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.1.3 - Repair system
+	 * Adds repair action, route, and template
+	 * No database changes needed - uses existing tables
+	 */
+	public function upgrade1001003Step1()
+	{
+		// Routes and templates imported automatically from _data
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.1.4 - Fix routes and cron logging
+	 * Corrects routes.xml structure (all routes need route_type)
+	 * Removes success logging from cron (only log errors)
+	 */
+	public function upgrade1001004Step1()
+	{
+		// Routes imported automatically from _data/routes.xml
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.1.5 - Repair route fix and wallet auto-creation
+	 * Changes repair route from sub_name to separate route prefix
+	 * Adds auto-creation of wallet in cron if missing
+	 */
+	public function upgrade1001005Step1()
+	{
+		// Routes and templates imported automatically from _data
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.1.6 - Transaction display fix and debug logging
+	 * Fixes transaction description to show decimal power costs
+	 * Adds temporary debug logging to track power cost deductions
+	 */
+	public function upgrade1001006Step1()
+	{
+		// No database changes, just code updates
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.1.7 - Fix syntax error in UpdateMining.php
+	 * Removes duplicate sprintf parameters that caused parse error
+	 */
+	public function upgrade1001007Step1()
+	{
+		// Code fix only
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.1.8 - Separate Repair controller
+	 * Creates dedicated Repair controller instead of using Dashboard::actionRepair()
+	 * Fixes route so /crypto-repair/X actually shows repair page
+	 */
+	public function upgrade1001008Step1()
+	{
+		// New controller file and updated route imported from _data
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.2.0 - Upgrade System (Feature #3)
+	 * Adds upgrade controller, route, and template
+	 * Users can now upgrade rigs 5 times for +10% hash rate per level
+	 * Cost scales: 20%, 40%, 60%, 80%, 100% of base rig cost
+	 */
+	public function upgrade1002000Step1()
+	{
+		// New Upgrade controller and updated templates/routes imported from _data
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.2.1 - Upgrade System UI Fixes
+	 * Fixes: Removed duplicate upgrade button, hash rate now shows upgraded value
+	 */
+	public function upgrade1002001Step1()
+	{
+		// Updated dashboard template to fix hash rate display
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.2.2 - Fix Output Display
+	 * Fixes: Output line in rig stats now shows upgraded hash rate (was showing 0.000100 instead of 0.000150)
+	 */
+	public function upgrade1002002Step1()
+	{
+		// Updated dashboard template Output display line
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.3.0 - Toggle Active/Inactive (Feature #4)
+	 * Adds toggle controller, route, and button to pause/resume mining
+	 * When paused: No mining, no power costs
+	 * When active: Normal mining resumes
+	 */
+	public function upgrade1003000Step1()
+	{
+		// New Toggle controller and updated templates/routes imported from _data
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.3.1 - Remove Duplicate Toggle Button
+	 * Fixes: Removed old disabled toggle placeholder button
+	 */
+	public function upgrade1003001Step1()
+	{
+		// Updated dashboard template to remove old toggle button
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.4.0 - Marketplace (Feature #5)
+	 * Adds marketplace controller, route, and template
+	 * Users can sell mined BTC for credits
+	 * Formula: BTC × Price = USD = Credits
+	 */
+	public function upgrade1004000Step1()
+	{
+		// New Market controller and updated templates/routes imported from _data
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.5.0 - Durability Degradation (Feature #6)
+	 * Rigs now degrade 1% per day automatically
+	 * At <50% durability: 25% output reduction
+	 * At <25% durability: 50% output reduction
+	 * At 0% durability: Rig stops mining completely
+	 */
+	public function upgrade1005000Step1()
+	{
+		// Updated cron to reduce durability over time
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.5.1 - Navigation Phrases + Admin Panel
+	 * Fixes: Navigation items now show proper titles
+	 * Fixes: Cron has proper title/description
+	 * Added: Admin settings page for configuration
+	 * Added: Options imported from option_groups.xml and options.xml
+	 */
+	public function upgrade1005001Step1()
+	{
+		// Phrases, cron title, admin navigation, and options imported from _data
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.6.0 - LEADERBOARDS (Feature #7) 🏆
+	 * Added: 4 leaderboard types (richest, most_mined, most_efficient, most_rigs)
+	 * Added: Leaderboard page (/crypto-leaderboard)
+	 * Added: UpdateLeaderboard cron (runs hourly)
+	 * Added: Cached rankings for performance
+	 * Added: User rank display
+	 * Added: Top 100 rankings
+	 * Added: Medal badges for top 3
+	 */
+	public function upgrade1006000Step1()
+	{
+		// Leaderboard table already exists from installStep8
+		// Route, navigation, and phrases imported from _data
+		// Cron entry imported from _data
+		// Leaderboard will populate on first cron run
+		
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.6.1 - Fix admin options and increase degradation challenge
+	 * - Admin navigation now points to proper options group
+	 * - Degradation rate increased to 4% per day (via options.xml default)
+	 * - Cron logging enabled (via options.xml default)
+	 */
+	public function upgrade1006001Step1()
+	{
+		// Options are set via XML defaults
+		// No need to call cron during upgrade
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.7.0 - Block Competition System
+	 * - Adds competitive block mining every 6 hours
+	 * - Weighted probability based on hashrate
+	 * - Winner gets bonus BTC reward
+	 * - New leaderboard type: Block Champion
+	 */
+	public function upgrade1070000Step1()
+	{
+		// Create blocks table
+		$this->schemaManager()->createTable('xf_ic_crypto_blocks', function(Create $table)
+		{
+			$table->addColumn('block_id', 'int')->autoIncrement();
+			$table->addColumn('block_number', 'int')->setDefault(0);
+			$table->addColumn('block_reward', 'decimal', '10,6')->setDefault(0.01);
+			$table->addColumn('total_hashrate', 'decimal', '12,6')->setDefault(0);
+			$table->addColumn('winner_user_id', 'int')->nullable();
+			$table->addColumn('winner_rig_id', 'int')->nullable();
+			$table->addColumn('solved_date', 'int')->nullable();
+			$table->addColumn('spawned_date', 'int')->setDefault(0);
+			$table->addColumn('is_solved', 'tinyint')->setDefault(0);
+			
+			$table->addPrimaryKey('block_id');
+			$table->addKey(['is_solved']);
+			$table->addKey(['solved_date']);
+			$table->addKey(['block_number']);
+		});
+		
+		// Create initial block
+		$this->db()->insert('xf_ic_crypto_blocks', [
+			'block_number' => 1,
+			'block_reward' => 0.01,
+			'total_hashrate' => 0,
+			'spawned_date' => \XF::$time,
+			'is_solved' => 0
+		]);
+		
+		// Cron entry will be imported from _data/cron.xml
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.7.2 - Stock portfolio fix, color scheme standardization, UI polish
+	 */
+	public function upgrade1070200Step1()
+	{
+		// No database changes needed
+		// This version fixes:
+		// - Stock portfolio display (now reads portfolio_value from xf_ic_sm_account)
+		// - Unified color scheme across all pages
+		// - Navigation consistency
+		
+		// Rebuild templates to apply color scheme updates
+		\XF::runOnce('rebuildCryptoTemplates', function()
+		{
+			\XF::app()->jobManager()->enqueueUnique('templateRebuild', 'XF:TemplateRebuild', [
+				'addon' => 'IC/CryptoMining'
+			]);
+		});
+		
+		return true;
+	}
+	
+	/**
+	 * Upgrade to 1.8.2 - Market Fluctuations
+	 * Add initial price history for chart
+	 */
+	public function upgrade1080200Step1()
+	{
+		$db = $this->db();
+		
+		// Check if price history is empty
+		$count = $db->fetchOne("SELECT COUNT(*) FROM xf_ic_crypto_market_history");
+		
+		if ($count == 0)
+		{
+			// Add 30 days of historical data with realistic fluctuations
+			$now = \XF::$time;
+			$basePrice = 50000;
+			
+			for ($i = 30; $i >= 0; $i--)
+			{
+				$date = $now - ($i * 86400); // Go back i days
+				
+				// Simulate realistic price movement
+				$randomChange = (mt_rand(-300, 300) / 10000); // ±3%
+				$basePrice = $basePrice * (1 + $randomChange);
+				
+				// Clamp to reasonable bounds
+				$basePrice = max(45000, min(55000, $basePrice));
+				
+				$db->insert('xf_ic_crypto_market_history', [
+					'crypto_name' => 'Bitcoin',
+					'price' => round($basePrice, 2),
+					'recorded_date' => $date
+				]);
+			}
+		}
+	}
+	
+	/**
+	 * Upgrade to 1.8.2.1 - Force template and cron import
+	 * Fixes template error and ensures market update cron is imported
+	 */
+	public function upgrade1080201Step1()
+	{
+		// Force template rebuild - XenForo will automatically re-import
+		// all _data/*.xml files including cron entries during this process
+		$this->app()->jobManager()->enqueueUnique('templateRebuild', 'XF:TemplateRebuild', [
+			'addon' => 'IC/CryptoMining'
+		]);
+		
+		return true;
+	}
+	
+	/**
+	 * Upgrade to 1.8.2.2 - Fix closure serialization error from 1.8.2.1
+	 * Same as 1.8.2.1 but without the broken closure
+	 */
+	public function upgrade1080202Step1()
+	{
+		// Force template rebuild - XenForo automatically re-imports
+		// all _data/*.xml files (including cron entries) during upgrade
+		$this->app()->jobManager()->enqueueUnique('templateRebuild', 'XF:TemplateRebuild', [
+			'addon' => 'IC/CryptoMining'
+		]);
+		
+		return true;
+	}
+	
+	/**
+	 * Upgrade to 1.8.3 - Market Fluctuations with proper file names
+	 * Fixes: Template array_column error + cron.xml (not cron_entries.xml)
+	 */
+	public function upgrade1080300Step1()
+	{
+		// Seed 30 days of price history if needed
+		$db = $this->db();
+		$historyCount = $db->fetchOne("SELECT COUNT(*) FROM xf_ic_crypto_market_history");
+		
+		if ($historyCount == 0)
+		{
+			// Seed 30 days of historical data
+			$basePrice = 50000;
+			for ($i = 30; $i >= 0; $i--)
+			{
+				$date = \XF::$time - ($i * 86400);
+				$variation = (mt_rand(-300, 300) / 100); // ±3%
+				$price = $basePrice * (1 + $variation);
+				$price = max(45000, min(55000, $price));
+				
+				$db->insert('xf_ic_crypto_market_history', [
+					'crypto_name' => 'Bitcoin',
+					'price' => $price,
+					'recorded_date' => $date
+				]);
+			}
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * Upgrade to 1.9.0 Step 1 - Create achievements table
+	 */
+	public function upgrade1090000Step1()
+	{
+		$this->schemaManager()->createTable('xf_ic_crypto_achievement', function(Create $table)
+		{
+			$table->addColumn('achievement_id', 'int')->autoIncrement();
+			$table->addColumn('achievement_key', 'varchar', 50);
+			$table->addColumn('achievement_category', 'varchar', 50);
+			$table->addColumn('xp_points', 'int')->setDefault(10);
+			$table->addColumn('difficulty_tier', 'varchar', 20)->setDefault('easy');
+			$table->addColumn('credits_reward', 'int')->setDefault(0);
+			$table->addColumn('is_repeatable', 'tinyint')->setDefault(0);
+			$table->addColumn('is_active', 'tinyint')->setDefault(1);
+			$table->addColumn('display_order', 'int')->setDefault(0);
+			$table->addPrimaryKey('achievement_id');
+			$table->addUniqueKey('achievement_key');
+			$table->addKey('achievement_category');
+			$table->addKey('is_active');
+		});
+		
+		return true;
+	}
+	
+	/**
+	 * Upgrade to 1.9.0 Step 2 - Create user achievements table
+	 */
+	public function upgrade1090000Step2()
+	{
+		$this->schemaManager()->createTable('xf_ic_crypto_user_achievement', function(Create $table)
+		{
+			$table->addColumn('user_achievement_id', 'int')->autoIncrement();
+			$table->addColumn('user_id', 'int');
+			$table->addColumn('achievement_id', 'int');
+			$table->addColumn('earned_date', 'int')->setDefault(0);
+			$table->addColumn('xp_awarded', 'int')->setDefault(0);
+			$table->addColumn('progress_data', 'mediumblob')->nullable();
+			$table->addPrimaryKey('user_achievement_id');
+			$table->addKey(['user_id', 'achievement_id']);
+			$table->addKey('earned_date');
+		});
+		
+		return true;
+	}
+	
+	/**
+	 * Upgrade to 1.9.0 Step 3 - Populate initial achievements
+	 */
+	public function upgrade1090000Step3()
+	{
+		$db = $this->db();
+		
+		$achievements = [
+			// [key, category, xp, tier, credits, title, description, display_order]
+			['first_dig', 'mining', 10, 'easy', 100, 'Purchase your first mining rig', 'The journey of a thousand blocks begins with a single rig.', 1],
+			['prospector', 'mining', 25, 'easy', 500, 'Mine 1 BTC total', 'Your first Bitcoin! Many more to come.', 2],
+			['gold_rush', 'mining', 100, 'medium', 2000, 'Mine 10 BTC total', 'The gold rush is on! You\'re mining serious coin.', 3],
+			['mining_empire', 'mining', 150, 'medium', 5000, 'Own 5 active mining rigs', 'Building an empire, one rig at a time.', 4],
+			['industrial_scale', 'mining', 300, 'hard', 10000, 'Own 10 active mining rigs', 'Industrial-scale mining operations achieved!', 5],
+			
+			['first_sale', 'trading', 10, 'easy', 100, 'Sell crypto for the first time', 'You\'ve made your first trade! The market awaits.', 10],
+			['market_trader', 'trading', 50, 'easy', 1000, 'Complete 10 crypto trades', 'A seasoned trader in the making.', 11],
+			['whale', 'trading', 200, 'hard', 5000, 'Sell 10+ BTC in single transaction', 'Making whale-sized moves in the market!', 12],
+			
+			['crypto_holder', 'wealth', 75, 'medium', 2000, 'Hold 5 BTC balance', 'Accumulating serious wealth in crypto.', 20],
+			['bitcoin_millionaire', 'wealth', 500, 'legendary', 25000, 'Portfolio worth $1,000,000', 'You\'re officially a Bitcoin millionaire!', 21],
+			
+			['maintenance_master', 'efficiency', 25, 'easy', 250, 'Repair a mining rig', 'Keeping your equipment in top condition.', 30],
+			['tech_upgrade', 'efficiency', 100, 'medium', 3000, 'Fully upgrade rig to level 5', 'Maximum efficiency achieved!', 31],
+			['well_oiled_machine', 'efficiency', 150, 'hard', 5000, 'Keep all rigs above 80% durability', 'Your operation runs like clockwork.', 32],
+			
+			['block_winner', 'competition', 50, 'medium', 1000, 'Win a block mining competition', 'First place in the block race!', 40],
+			['top_miner', 'competition', 250, 'very_hard', 10000, 'Reach top 10 on any leaderboard', 'You\'re among the elite miners!', 41],
+		];
+		
+		foreach ($achievements as $ach)
+		{
+			$db->insert('xf_ic_crypto_achievement', [
+				'achievement_key' => $ach[0],
+				'achievement_category' => $ach[1],
+				'xp_points' => $ach[2],
+				'difficulty_tier' => $ach[3],
+				'credits_reward' => $ach[4],
+				'is_repeatable' => 0,
+				'is_active' => 1,
+				'display_order' => $ach[7]
+			], false, 'display_order = VALUES(display_order)');
+			
+			// Insert title phrase
+			$db->insert('xf_phrase', [
+				'language_id' => 0,
+				'title' => 'ic_crypto_achievement_title.' . $ach[0],
+				'phrase_text' => $ach[5],
+				'addon_id' => 'IC/CryptoMining',
+				'version_id' => 1090000,
+				'version_string' => '1.9.0'
+			], false, 'phrase_text = VALUES(phrase_text)');
+			
+			// Insert description phrase
+			$db->insert('xf_phrase', [
+				'language_id' => 0,
+				'title' => 'ic_crypto_achievement_desc.' . $ach[0],
+				'phrase_text' => $ach[6],
+				'addon_id' => 'IC/CryptoMining',
+				'version_id' => 1090000,
+				'version_string' => '1.9.0'
+			], false, 'phrase_text = VALUES(phrase_text)');
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.10.0.1 - Mining Expedition Grid (Step 1/4)
+	 * Create grid state table for 10x10 expedition grid
+	 */
+	public function upgrade1100001Step1()
+	{
+		$this->schemaManager()->createTable('xf_ic_crypto_grid_state', function(Create $table)
+		{
+			$table->addColumn('grid_block_id', 'int')->autoIncrement();
+			$table->addColumn('generation_id', 'int')->setDefault(1);
+			$table->addColumn('position', 'tinyint')->setDefault(0); // 0-99 (10x10 grid)
+			$table->addColumn('block_type', 'enum', ['jackpot', 'rich_vein', 'standard', 'weak_vein', 'collapse']);
+			$table->addColumn('btc_value', 'decimal', '10,6')->setDefault(0);
+			$table->addColumn('durability_cost', 'decimal', '5,2')->setDefault(0);
+			$table->addColumn('is_mined', 'tinyint')->setDefault(0);
+			$table->addColumn('mined_by_user_id', 'int')->nullable();
+			$table->addColumn('mined_date', 'int')->nullable();
+			
+			$table->addPrimaryKey('grid_block_id');
+			$table->addKey(['generation_id', 'position']);
+			$table->addKey(['is_mined']);
+		});
+	}
+	
+	/**
+	 * Upgrade to v1.10.0.1 - Mining Expedition Grid (Step 2/4)
+	 * Create grid generations table to track cycles
+	 */
+	public function upgrade1100001Step2()
+	{
+		$this->schemaManager()->createTable('xf_ic_crypto_grid_generations', function(Create $table)
+		{
+			$table->addColumn('generation_id', 'int')->autoIncrement();
+			$table->addColumn('created_date', 'int')->setDefault(0);
+			$table->addColumn('ended_date', 'int')->nullable();
+			$table->addColumn('total_mined', 'int')->setDefault(0);
+			$table->addColumn('total_jackpots', 'int')->setDefault(0);
+			$table->addColumn('total_collapses', 'int')->setDefault(0);
+			$table->addColumn('is_active', 'tinyint')->setDefault(1);
+			
+			$table->addPrimaryKey('generation_id');
+			$table->addKey(['is_active']);
+			$table->addKey(['created_date']);
+		});
+		
+		// Create first generation
+		$this->db()->insert('xf_ic_crypto_grid_generations', [
+			'created_date' => \XF::$time,
+			'is_active' => 1
+		]);
+	}
+	
+	/**
+	 * Upgrade to v1.10.0.1 - Mining Expedition Grid (Step 3/4)
+	 * Create grid mining history table
+	 */
+	public function upgrade1100001Step3()
+	{
+		$this->schemaManager()->createTable('xf_ic_crypto_grid_mines', function(Create $table)
+		{
+			$table->addColumn('mine_id', 'int')->autoIncrement();
+			$table->addColumn('user_id', 'int')->setDefault(0);
+			$table->addColumn('rig_id', 'int')->setDefault(0);
+			$table->addColumn('generation_id', 'int')->setDefault(0);
+			$table->addColumn('position', 'tinyint')->setDefault(0);
+			$table->addColumn('block_type', 'enum', ['jackpot', 'rich_vein', 'standard', 'weak_vein', 'collapse']);
+			$table->addColumn('btc_earned', 'decimal', '10,6')->setDefault(0);
+			$table->addColumn('durability_lost', 'decimal', '5,2')->setDefault(0);
+			$table->addColumn('credits_spent', 'int')->setDefault(100);
+			$table->addColumn('used_scout', 'tinyint')->setDefault(0);
+			$table->addColumn('used_insurance', 'tinyint')->setDefault(0);
+			$table->addColumn('mined_date', 'int')->setDefault(0);
+			
+			$table->addPrimaryKey('mine_id');
+			$table->addKey(['user_id']);
+			$table->addKey(['generation_id']);
+			$table->addKey(['mined_date']);
+		});
+	}
+	
+	/**
+	 * Upgrade to v1.10.0.1 - Mining Expedition Grid (Step 4/4)
+	 * Create user buffs table for Lucky Pickaxe, etc.
+	 */
+	public function upgrade1100001Step4()
+	{
+		$this->schemaManager()->createTable('xf_ic_crypto_user_buffs', function(Create $table)
+		{
+			$table->addColumn('buff_id', 'int')->autoIncrement();
+			$table->addColumn('user_id', 'int')->setDefault(0);
+			$table->addColumn('buff_type', 'enum', ['lucky_pickaxe', 'double_rewards', 'iron_will']);
+			$table->addColumn('buff_value', 'decimal', '5,2')->setDefault(0);
+			$table->addColumn('started_date', 'int')->setDefault(0);
+			$table->addColumn('expires_date', 'int')->setDefault(0);
+			$table->addColumn('is_active', 'tinyint')->setDefault(1);
+			
+			$table->addPrimaryKey('buff_id');
+			$table->addKey(['user_id', 'is_active']);
+			$table->addKey(['expires_date']);
+		});
+	}
+	
+	/**
+	 * Upgrade to v1.10.0.3 - Grid Interface & Mining (Bug Fix)
+	 * Fix rig filtering and rebuild templates to ensure CSS loads
+	 */
+	public function upgrade1100003Step1()
+	{
+		// Force template rebuild
+		\XF::app()->jobManager()->enqueueUnique('templateRebuild', 'XF:TemplateRebuild', [
+			'style_id' => 0
+		]);
+		
+		return true;
+	}
+	
+	/**
+	 * Upgrade to v1.10.0.4 - Credits & CSS Fix
+	 * Fix wallet credits integration and undefined LESS variable
+	 */
+	public function upgrade1100004Step1()
+	{
+		// Force template rebuild for @crypto-bg-body fix
+		\XF::app()->jobManager()->enqueueUnique('templateRebuild', 'XF:TemplateRebuild', [
+			'style_id' => 0
+		]);
+		
+		return true;
+	}
+	
 	// ==================== UNINSTALL STEPS ====================
 	
 	public function uninstallStep1()
@@ -552,5 +1364,40 @@ class Setup extends AbstractSetup
 	public function uninstallStep8()
 	{
 		$this->schemaManager()->dropTable('xf_ic_crypto_leaderboard');
+	}
+	
+	public function uninstallStep9()
+	{
+		$this->schemaManager()->dropTable('xf_ic_crypto_blocks');
+	}
+	
+	public function uninstallStep10()
+	{
+		$this->schemaManager()->dropTable('xf_ic_crypto_achievement');
+	}
+	
+	public function uninstallStep11()
+	{
+		$this->schemaManager()->dropTable('xf_ic_crypto_user_achievement');
+	}
+	
+	public function uninstallStep12()
+	{
+		$this->schemaManager()->dropTable('xf_ic_crypto_grid_state');
+	}
+	
+	public function uninstallStep13()
+	{
+		$this->schemaManager()->dropTable('xf_ic_crypto_grid_generations');
+	}
+	
+	public function uninstallStep14()
+	{
+		$this->schemaManager()->dropTable('xf_ic_crypto_grid_mines');
+	}
+	
+	public function uninstallStep15()
+	{
+		$this->schemaManager()->dropTable('xf_ic_crypto_user_buffs');
 	}
 }

@@ -1,17 +1,23 @@
 {
-    "legacy_addon_id": "",
-    "title": "Crypto Mining Simulation",
-    "description": "Virtual cryptocurrency mining system with passive income, rig management, and market simulation",
-    "version_id": 1000004,
-    "version_string": "1.0.4",
-    "dev": "IdleChatter",
-    "dev_url": "",
-    "faq_url": "",
-    "support_url": "",
-    "extra_urls": [],
-    "require": {
-        "XF": [2030000, "XenForo 2.3.0+"],
-        "php": ["8.0.0", "PHP 8.0.0+"]
-    },
-    "icon": ""
+  "legacy_addon_id": "",
+  "title": "Crypto Mining Simulation",
+  "description": "Virtual cryptocurrency mining with Stock Market integration - mine BTC, invest in stocks, dominate leaderboards",
+  "version_id": 1110017,
+  "version_string": "1.11.0.17",
+  "dev": "IdleChatter",
+  "dev_url": "",
+  "faq_url": "",
+  "support_url": "",
+  "extra_urls": [],
+  "require": {
+    "XF": [
+      2030000,
+      "XenForo 2.3.0+"
+    ],
+    "php": [
+      "8.0.0",
+      "PHP 8.0.0+"
+    ]
+  },
+  "icon": ""
 }
