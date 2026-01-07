@@ -27,6 +27,9 @@ class Shop extends AbstractController
 		/** @var \IC\CryptoMining\Repository\Market $marketRepo */
 		$marketRepo = $this->repository('IC\CryptoMining:Market');
 		
+		/** @var \IC\CryptoMining\Repository\Wallet $walletRepo */
+		$walletRepo = $this->repository('IC\CryptoMining:Wallet');
+		
 		// Get all rigs grouped by tier
 		$rigsByTier = $rigRepo->getRigsByTier();
 		
@@ -36,10 +39,18 @@ class Shop extends AbstractController
 		// Get tier stats
 		$tierStats = $rigRepo->getTierStats();
 		
+		// Get or create user wallet
+		$wallet = null;
+		if (\XF::visitor()->user_id)
+		{
+			$wallet = $walletRepo->getOrCreateWallet(\XF::visitor()->user_id);
+		}
+		
 		$viewParams = [
 			'rigsByTier' => $rigsByTier,
 			'btcPrice' => $btcPrice,
 			'tierStats' => $tierStats,
+			'wallet' => $wallet,
 			'visitor' => \XF::visitor()
 		];
 		
@@ -57,7 +68,7 @@ class Shop extends AbstractController
 			return $this->noPermission();
 		}
 		
-		// Get rig type
+		// Get rig type from URL parameter (now properly defined in route)
 		$rigType = $this->assertRigTypeExists($params->rig_type_id);
 		
 		/** @var \IC\CryptoMining\Repository\Market $marketRepo */
@@ -78,7 +89,11 @@ class Shop extends AbstractController
 		// Validate purchase
 		$visitor = \XF::visitor();
 		
-		if (!$rigType->canPurchase($visitor, $error))
+		/** @var \IC\CryptoMining\Repository\Wallet $walletRepo */
+		$walletRepo = $this->repository('IC\CryptoMining:Wallet');
+		$wallet = $walletRepo->getOrCreateWallet($visitor->user_id);
+		
+		if (!$rigType->canPurchase($visitor, $wallet, $error))
 		{
 			return $this->error($error);
 		}
@@ -89,9 +104,6 @@ class Shop extends AbstractController
 		/** @var \IC\CryptoMining\Repository\UserRig $userRigRepo */
 		$userRigRepo = $this->repository('IC\CryptoMining:UserRig');
 		
-		/** @var \IC\CryptoMining\Repository\Wallet $walletRepo */
-		$walletRepo = $this->repository('IC\CryptoMining:Wallet');
-		
 		$db = $this->app->db();
 		$db->beginTransaction();
 		
@@ -99,21 +111,18 @@ class Shop extends AbstractController
 		{
 			// Create user rig
 			$userRig = $userRigRepo->purchaseRig($visitor, $rigType);
-			$userRig->save();
+			if (!$userRig->save())
+			{
+				throw new \Exception('Failed to save user rig: ' . print_r($userRig->getErrors(), true));
+			}
 			
-			// Deduct credits (assuming DBTech Credits addon)
-			// Adjust this if using different currency system
-			$creditsRepo = $this->repository('DBTech\Credits:Currency');
-			$creditsRepo->updateUserCurrency(
-				$visitor->user_id,
-				-$rigType->base_cost,
-				'Purchased ' . $rigType->rig_name
-			);
-			
-			// Create/update wallet
-			$wallet = $walletRepo->getOrCreateWallet($visitor->user_id);
+			// Deduct from wallet cash balance  
+			$wallet->cash_balance -= $rigType->base_cost;
 			$wallet->credits_spent += $rigType->base_cost;
-			$wallet->save();
+			if (!$wallet->save())
+			{
+				throw new \Exception('Failed to save wallet: ' . print_r($wallet->getErrors(), true));
+			}
 			
 			// Log transaction
 			/** @var \IC\CryptoMining\Entity\Transaction $transaction */
@@ -124,7 +133,10 @@ class Shop extends AbstractController
 			$transaction->rig_type_id = $rigType->rig_type_id;
 			$transaction->description = 'Purchased ' . $rigType->rig_name;
 			$transaction->transaction_date = \XF::$time;
-			$transaction->save();
+			if (!$transaction->save())
+			{
+				throw new \Exception('Failed to save transaction: ' . print_r($transaction->getErrors(), true));
+			}
 			
 			$db->commit();
 		}
@@ -134,6 +146,11 @@ class Shop extends AbstractController
 			\XF::logException($e, false, 'Crypto mining rig purchase error: ');
 			return $this->error(\XF::phrase('ic_crypto_purchase_error'));
 		}
+		
+		// Check achievements after successful purchase
+		/** @var \IC\CryptoMining\Service\Achievement $achievementService */
+		$achievementService = $this->service('IC\CryptoMining:Achievement');
+		$achievementService->checkAchievements($visitor, 'rig_purchased');
 		
 		return $this->redirect(
 			$this->buildLink('crypto-mining'),
