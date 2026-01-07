@@ -1,0 +1,196 @@
+// ====== ACHIEVEMENTS PAGE ======
+
+.cryptoAchievementStats
+{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	margin-bottom: 30px;
+	
+	.cryptoAchievementStats-item
+	{
+		background: @crypto-bg-card;
+		border: 1px solid @crypto-border;
+		border-radius: 8px;
+		padding: 20px;
+		text-align: center;
+		
+		.cryptoAchievementStats-label
+		{
+			font-size: 12px;
+			color: @crypto-text-secondary;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 8px;
+		}
+		
+		.cryptoAchievementStats-value
+		{
+			font-size: 32px;
+			font-weight: 700;
+			color: @crypto-primary;
+		}
+	}
+}
+
+.cryptoAchievementCategory
+{
+	margin-bottom: 40px;
+	
+	.cryptoAchievementCategory-title
+	{
+		font-size: 20px;
+		font-weight: 700;
+		margin-bottom: 20px;
+		color: @crypto-text-primary;
+		padding-bottom: 10px;
+		border-bottom: 2px solid @crypto-border;
+		
+		i
+		{
+			margin-right: 8px;
+			color: @crypto-primary;
+		}
+	}
+}
+
+.cryptoAchievementList
+{
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
+}
+
+.cryptoAchievement
+{
+	background: @crypto-bg-card;
+	border: 2px solid @crypto-border;
+	border-radius: 12px;
+	padding: 20px;
+	transition: all 0.3s ease;
+	
+	&amp;.is-earned
+	{
+		border-color: @crypto-success;
+		box-shadow: 0 0 20px rgba(76, 175, 80, 0.2);
+	}
+	
+	&amp;.is-locked
+	{
+		opacity: 0.6;
+		filter: grayscale(50%);
+	}
+	
+	&amp;:hover
+	{
+		transform: translateY(-4px);
+		box-shadow: @crypto-shadow;
+	}
+	
+	.cryptoAchievement-header
+	{
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		margin-bottom: 12px;
+		
+		.cryptoAchievement-icon
+		{
+			font-size: 32px;
+		}
+		
+		.cryptoAchievement-titleBlock
+		{
+			flex: 1;
+			
+			.cryptoAchievement-title
+			{
+				font-size: 16px;
+				font-weight: 700;
+				color: @crypto-text-primary;
+				margin-bottom: 4px;
+			}
+			
+			.cryptoAchievement-difficulty
+			{
+				font-size: 11px;
+				text-transform: uppercase;
+				padding: 2px 8px;
+				border-radius: 4px;
+				font-weight: 600;
+				display: inline-block;
+				
+				&amp;.diff-easy { background: @crypto-success; color: #fff; }
+				&amp;.diff-medium { background: @crypto-warning; color: #fff; }
+				&amp;.diff-hard { background: @crypto-danger; color: #fff; }
+				&amp;.diff-very_hard { background: #9c27b0; color: #fff; }
+				&amp;.diff-epic { background: #ff6f00; color: #fff; }
+				&amp;.diff-legendary { background: @crypto-gradient-gold; color: #000; }
+			}
+		}
+	}
+	
+	.cryptoAchievement-description
+	{
+		font-size: 14px;
+		color: @crypto-text-secondary;
+		margin-bottom: 12px;
+		line-height: 1.5;
+	}
+	
+	.cryptoAchievement-rewards
+	{
+		display: flex;
+		gap: 12px;
+		margin-bottom: 12px;
+		
+		.cryptoAchievement-reward
+		{
+			font-size: 13px;
+			color: @crypto-text-secondary;
+			
+			i
+			{
+				margin-right: 4px;
+			}
+			
+			.reward-value
+			{
+				color: @crypto-primary;
+				font-weight: 700;
+			}
+		}
+	}
+	
+	.cryptoAchievement-earnedDate
+	{
+		font-size: 12px;
+		color: @crypto-success;
+		font-weight: 600;
+		text-align: center;
+		padding-top: 12px;
+		border-top: 1px solid @crypto-border;
+		
+		i
+		{
+			margin-right: 4px;
+		}
+	}
+}
+
+// Responsive
+@media (max-width: 768px)
+{
+	.cryptoAchievementStats
+	{
+		grid-template-columns: 1fr;
+	}
+	
+	.cryptoAchievementList
+	{
+		grid-template-columns: 1fr;
+	}
+}
+
+}
+</template>

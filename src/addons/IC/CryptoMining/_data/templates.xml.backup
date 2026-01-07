@@ -4,195 +4,27 @@
 	<template type="public" title="ic_crypto_shop_index" addon_id="IC/CryptoMining" version_id="1090013" version_string="1.9.0.13">&lt;xf:title&gt;Mining Rig Shop&lt;/xf:title&gt;
 
 &lt;div class="cryptoNav"&gt;
-	&lt;span class="cryptoNav-item"&gt;
+	&lt;a href="{{ link('crypto-mining') }}" class="cryptoNav-item"&gt;
 		&lt;span class="cryptoNav-icon"&gt;📊&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;&lt;a href="{{ link('crypto-mining') }}"&gt;Dashboard&lt;/a&gt;&lt;/span&gt;
-	&lt;/span&gt;
+		&lt;span class="cryptoNav-label"&gt;Dashboard&lt;/span&gt;
+	&lt;/a&gt;
 	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
+	&lt;div class="cryptoNav-item"&gt;
+		&lt;a class="cryptoNav-trigger menuTrigger" 
+		   data-xf-click="menu" 
+		   role="button" 
+		   tabindex="0"
+		   aria-expanded="false"
+		   aria-haspopup="true"&gt;
+			&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
+			&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
+			&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
+		&lt;/a&gt;
+		&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
+			&lt;div class="menu-content"&gt;
 				&lt;a href="{{ link('crypto-blocks') }}" class="menu-linkRow"&gt;⛏️ Block Competition&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
 				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
 			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow is-selected"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow is-selected"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow is-selected"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
 		&lt;/div&gt;
 	&lt;/div&gt;
 	
@@ -267,7 +99,17 @@
 	&lt;/div&gt;
 &lt;/div&gt;
 
-
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+	var toggles = document.querySelectorAll('.cryptoNav-toggle');
+	toggles.forEach(function(toggle) {
+		toggle.addEventListener('click', function(e) {
+			e.preventDefault();
+			this.parentElement.classList.toggle('cryptoNav-dropdown--active');
+		});
+	});
+});
+&lt;/script&gt;
 
 
 
@@ -417,195 +259,27 @@
 	<template type="public" title="ic_crypto_shop_buy" addon_id="IC/CryptoMining" version_id="1090013" version_string="1.9.0.13">&lt;xf:title&gt;Purchase {$rigType.rig_name}&lt;/xf:title&gt;
 
 &lt;div class="cryptoNav"&gt;
-	&lt;span class="cryptoNav-item"&gt;
+	&lt;a href="{{ link('crypto-mining') }}" class="cryptoNav-item"&gt;
 		&lt;span class="cryptoNav-icon"&gt;📊&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;&lt;a href="{{ link('crypto-mining') }}"&gt;Dashboard&lt;/a&gt;&lt;/span&gt;
-	&lt;/span&gt;
+		&lt;span class="cryptoNav-label"&gt;Dashboard&lt;/span&gt;
+	&lt;/a&gt;
 	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
+	&lt;div class="cryptoNav-item"&gt;
+		&lt;a class="cryptoNav-trigger menuTrigger" 
+		   data-xf-click="menu" 
+		   role="button" 
+		   tabindex="0"
+		   aria-expanded="false"
+		   aria-haspopup="true"&gt;
+			&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
+			&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
+			&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
+		&lt;/a&gt;
+		&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
+			&lt;div class="menu-content"&gt;
 				&lt;a href="{{ link('crypto-blocks') }}" class="menu-linkRow"&gt;⛏️ Block Competition&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
 				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
 			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow is-selected"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow is-selected"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow is-selected"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
 		&lt;/div&gt;
 	&lt;/div&gt;
 	
@@ -680,7 +354,17 @@
 	&lt;/div&gt;
 &lt;/div&gt;
 
-
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+	var toggles = document.querySelectorAll('.cryptoNav-toggle');
+	toggles.forEach(function(toggle) {
+		toggle.addEventListener('click', function(e) {
+			e.preventDefault();
+			this.parentElement.classList.toggle('cryptoNav-dropdown--active');
+		});
+	});
+});
+&lt;/script&gt;
 
 
 
@@ -786,195 +470,27 @@
 	<template type="public" title="ic_crypto_dashboard" addon_id="IC/CryptoMining" version_id="1090013" version_string="1.9.0.13">&lt;xf:title&gt;Crypto Mining Dashboard&lt;/xf:title&gt;
 
 &lt;div class="cryptoNav"&gt;
-	&lt;span class="cryptoNav-item cryptoNav-item--active"&gt;
+	&lt;a href="{{ link('crypto-mining') }}" class="cryptoNav-item cryptoNav-item--active"&gt;
 		&lt;span class="cryptoNav-icon"&gt;📊&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;&lt;a href="{{ link('crypto-mining') }}"&gt;Dashboard&lt;/a&gt;&lt;/span&gt;
-	&lt;/span&gt;
+		&lt;span class="cryptoNav-label"&gt;Dashboard&lt;/span&gt;
+	&lt;/a&gt;
 	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
+	&lt;div class="cryptoNav-item"&gt;
+		&lt;a class="cryptoNav-trigger menuTrigger" 
+		   data-xf-click="menu" 
+		   role="button" 
+		   tabindex="0"
+		   aria-expanded="false"
+		   aria-haspopup="true"&gt;
+			&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
+			&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
+			&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
+		&lt;/a&gt;
+		&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
+			&lt;div class="menu-content"&gt;
 				&lt;a href="{{ link('crypto-blocks') }}" class="menu-linkRow"&gt;⛏️ Block Competition&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
 				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
 			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
 		&lt;/div&gt;
 	&lt;/div&gt;
 	
@@ -1049,7 +565,17 @@
 	&lt;/div&gt;
 &lt;/div&gt;
 
-
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+	var toggles = document.querySelectorAll('.cryptoNav-toggle');
+	toggles.forEach(function(toggle) {
+		toggle.addEventListener('click', function(e) {
+			e.preventDefault();
+			this.parentElement.classList.toggle('cryptoNav-dropdown--active');
+		});
+	});
+});
+&lt;/script&gt;
 
 
 
@@ -6131,44 +5657,46 @@
 }
 
 
-
-
 // ########################## NAVIGATION WITH XENFORO MENUS ##########################
 
 .cryptoNav {
 	display: flex;
 	align-items: center;
-	gap: @xf-paddingSmall;
+	gap: @xf-paddingMedium;
 	margin-bottom: @xf-paddingLarge;
 	padding: @xf-paddingMedium;
 	background: @xf-contentAltBg;
 	border-radius: @xf-borderRadiusMedium;
 	border: 1px solid @xf-borderColor;
 	flex-wrap: wrap;
-	position: relative;
 }
 
 .cryptoNav-item {
-	display: flex;
-	align-items: center;
-	gap: @xf-paddingSmall;
-	padding: @xf-paddingMedium @xf-paddingLarge;
-	background: none;
-	border: none;
-	border-radius: @xf-borderRadiusSmall;
-	color: @xf-textColor;
-	text-decoration: none;
-	transition: all 0.2s;
-	cursor: pointer;
-	font-size: @xf-fontSizeNormal;
-	white-space: nowrap;
+	position: relative;
 	
-	&amp;:hover {
-		background: @xf-paletteColor1;
-		color: @xf-textColorFeature;
+	&gt; a {
+		display: flex;
+		align-items: center;
+		gap: @xf-paddingSmall;
+		padding: @xf-paddingMedium;
+		background: none;
+		border: none;
+		border-radius: @xf-borderRadiusSmall;
+		color: @xf-textColor;
+		text-decoration: none;
+		transition: all 0.2s;
+		cursor: pointer;
+		font-size: @xf-fontSizeNormal;
+		white-space: nowrap;
+		
+		&amp;:hover {
+			background: @xf-paletteColor1;
+			color: @xf-textColorFeature;
+		}
 	}
 	
-	&amp;--active {
+	&amp;--active &gt; a,
+	.cryptoNav-trigger.cryptoNav-item--active {
 		background: @xf-paletteColor1;
 		color: @xf-textColorFeature;
 		font-weight: @xf-fontWeightHeavy;
@@ -6197,14 +5725,28 @@
 	}
 }
 
-// Menu styling - these menus are siblings of triggers
-.cryptoNav + .menu,
-.cryptoNav .menuTrigger + .menu {
-	min-width: 220px;
+.cryptoNav-trigger {
+	display: flex;
+	align-items: center;
+	gap: @xf-paddingSmall;
+	padding: @xf-paddingMedium;
+	border-radius: @xf-borderRadiusSmall;
+	color: @xf-textColor;
+	text-decoration: none;
+	transition: all 0.2s;
+	cursor: pointer;
+	font-size: @xf-fontSizeNormal;
+	white-space: nowrap;
 	
-	.menu-row {
-		padding: 0;
+	&amp;:hover {
+		background: @xf-paletteColor1;
+		color: @xf-textColorFeature;
 	}
+}
+
+// XenForo menu styling for crypto nav
+.cryptoNav-item .menu {
+	min-width: 200px;
 	
 	.menu-linkRow {
 		display: block;
@@ -6212,7 +5754,6 @@
 		color: @xf-textColor;
 		text-decoration: none;
 		transition: background 0.2s;
-		border-radius: 0;
 		
 		&amp;:hover {
 			background: @xf-contentAltBg;
@@ -6229,402 +5770,40 @@
 // Mobile adjustments
 @media (max-width: 768px) {
 	.cryptoNav {
-		gap: 0;
+		gap: @xf-paddingSmall;
 		justify-content: space-around;
 	}
 	
-	.cryptoNav-item {
+	.cryptoNav-item &gt; a,
+	.cryptoNav-trigger {
 		padding: @xf-paddingSmall;
 	}
 }
-
-
-// ======================== MINING RESULT MODAL ========================
-.cryptoModal
-{
-	text-align: center;
-	padding: @xf-paddingLarge;
-	max-width: 500px;
-	margin: 0 auto;
-	
-	.cryptoModal-icon
-	{
-		font-size: 64px;
-		margin-bottom: @xf-paddingMedium;
-		animation: bounceIn 0.5s;
-	}
-	
-	.cryptoModal-title
-	{
-		font-size: @xf-fontSizeLargest;
-		font-weight: @xf-fontWeightHeavy;
-		margin-bottom: @xf-paddingMedium;
-		color: @xf-textColor;
-	}
-	
-	.cryptoModal-message
-	{
-		font-size: @xf-fontSizeLarge;
-		margin-bottom: @xf-paddingLarge;
-		color: @xf-textColorMuted;
-	}
-	
-	.cryptoModal-stats
-	{
-		background: @xf-contentAltBg;
-		border-radius: @xf-borderRadiusMedium;
-		padding: @xf-paddingMedium;
-		margin-bottom: @xf-paddingLarge;
-		
-		.cryptoModal-stat
-		{
-			display: flex;
-			justify-content: space-between;
-			padding: @xf-paddingSmall 0;
-			border-bottom: 1px solid @xf-borderColor;
-			
-			&amp;:last-child
-			{
-				border-bottom: none;
-			}
-			
-			.cryptoModal-statLabel
-			{
-				font-weight: @xf-fontWeightNormal;
-				color: @xf-textColorMuted;
-			}
-			
-			.cryptoModal-statValue
-			{
-				font-weight: @xf-fontWeightHeavy;
-				color: @xf-textColor;
-			}
-		}
-	}
-	
-	.cryptoModal-close
-	{
-		width: 100%;
-		padding: @xf-paddingMedium;
-		font-size: @xf-fontSizeLarge;
-	}
-	
-	// Type-specific colors
-	&amp;.cryptoModal--jackpot
-	{
-		.cryptoModal-title { color: #FFD700; }
-		.cryptoModal-icon { animation: jackpotPulse 1s infinite; }
-	}
-	
-	&amp;.cryptoModal--rich
-	{
-		.cryptoModal-title { color: #4CAF50; }
-	}
-	
-	&amp;.cryptoModal--collapse
-	{
-		.cryptoModal-title { color: #f44336; }
-	}
-	
-	&amp;.cryptoModal--empty
-	{
-		.cryptoModal-title { color: @xf-textColorMuted; }
-	}
-}
-
-// Animations
-@keyframes bounceIn
-{
-	0% { transform: scale(0.3); opacity: 0; }
-	50% { transform: scale(1.05); }
-	70% { transform: scale(0.9); }
-	100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes jackpotPulse
-{
-	0%, 100% { transform: scale(1); }
-	50% { transform: scale(1.2); }
-}
-
-
-// GRID JAVASCRIPT (in LESS to avoid template processing issues)
-&lt;/style&gt;
-&lt;script&gt;
-window.initCryptoGrid = function() {
-	const gridElement = document.getElementById('miningGrid');
-	if (!gridElement) {
-		console.error('Grid element not found!');
-		return;
-	}
-	
-	console.log('Grid loaded, adding click handler');
-	
-	gridElement.addEventListener('click', function(e) {
-		const block = e.target.closest('.cryptoGrid-block');
-		if (!block || block.classList.contains('is-mined')) return;
-		
-		const position = parseInt(block.dataset.position);
-		const rigSelect = document.getElementById('selectedRig');
-		const rigId = rigSelect ? rigSelect.value : null;
-		const insuranceCheck = document.getElementById('useInsurance');
-		const useInsurance = insuranceCheck ? insuranceCheck.checked : false;
-		
-		console.log('Block clicked:', position, 'rigId:', rigId);
-		
-		if (!rigId) {
-			alert('Please select a mining rig first!');
-			return;
-		}
-		
-		block.style.pointerEvents = 'none';
-		block.classList.add('is-mining');
-		
-		console.log('Sending AJAX...');
-		
-		XF.ajax('POST', XF.canonicalizeUrl('crypto-grid' + '/' + 'mine'), {
-			position: position,
-			rig_id: rigId,
-			use_insurance: useInsurance ? 1 : 0,
-			_xfToken: XF.config.csrf
-		}).then(function(data) {
-			console.log('Response:', data);
-			
-			if (data.status === 'ok') {
-				alert('Mining Result: ' + data.message + '\n\nBTC Earned: ' + data.btcEarned + '\nDurability Lost: ' + data.durabilityLost + '%');
-				window.location.reload();
-			} else if (data.errors) {
-				alert('Error: ' + (data.errors[0] || 'Mining failed'));
-				block.style.pointerEvents = '';
-				block.classList.remove('is-mining');
-			} else {
-				alert('Unexpected response');
-				block.style.pointerEvents = '';
-				block.classList.remove('is-mining');
-			}
-		}).catch(function(error) {
-			console.error('Error:', error);
-			alert('Network error: ' + error);
-			block.style.pointerEvents = '';
-			block.classList.remove('is-mining');
-		});
-	});
-	
-	const rigSelect = document.getElementById('selectedRig');
-	if (rigSelect) {
-		rigSelect.addEventListener('change', function() {
-			const durabilityElement = document.getElementById('rigDurability');
-			if (!durabilityElement) return;
-			
-			if (!this.value) {
-				durabilityElement.textContent = '-';
-				return;
-			}
-			
-			const option = this.querySelector('option[value="' + this.value + '"]');
-			if (option &amp;&amp; option.dataset.durability) {
-				durabilityElement.textContent = option.dataset.durability + '%';
-			} else {
-				durabilityElement.textContent = '-';
-			}
-		});
-	}
-};
-&lt;/script&gt;
-&lt;style&gt;
-// END GRID JAVASCRIPT</template>
+</template>
 <template title="ic_crypto_repair" type="public" version_id="1090013" version_string="1.9.0.13">&lt;xf:title&gt;Repair {$rig.RigType.rig_name}&lt;/xf:title&gt;
 
 &lt;div class="cryptoNav"&gt;
-	&lt;span class="cryptoNav-item"&gt;
+	&lt;a href="{{ link('crypto-mining') }}" class="cryptoNav-item"&gt;
 		&lt;span class="cryptoNav-icon"&gt;📊&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;&lt;a href="{{ link('crypto-mining') }}"&gt;Dashboard&lt;/a&gt;&lt;/span&gt;
-	&lt;/span&gt;
+		&lt;span class="cryptoNav-label"&gt;Dashboard&lt;/span&gt;
+	&lt;/a&gt;
 	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
+	&lt;div class="cryptoNav-item"&gt;
+		&lt;a class="cryptoNav-trigger menuTrigger" 
+		   data-xf-click="menu" 
+		   role="button" 
+		   tabindex="0"
+		   aria-expanded="false"
+		   aria-haspopup="true"&gt;
+			&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
+			&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
+			&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
+		&lt;/a&gt;
+		&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
+			&lt;div class="menu-content"&gt;
 				&lt;a href="{{ link('crypto-blocks') }}" class="menu-linkRow"&gt;⛏️ Block Competition&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
 				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
 			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
 		&lt;/div&gt;
 	&lt;/div&gt;
 	
@@ -6699,7 +5878,17 @@ window.initCryptoGrid = function() {
 	&lt;/div&gt;
 &lt;/div&gt;
 
-
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+	var toggles = document.querySelectorAll('.cryptoNav-toggle');
+	toggles.forEach(function(toggle) {
+		toggle.addEventListener('click', function(e) {
+			e.preventDefault();
+			this.parentElement.classList.toggle('cryptoNav-dropdown--active');
+		});
+	});
+});
+&lt;/script&gt;
 
 
 
@@ -6786,195 +5975,27 @@ window.initCryptoGrid = function() {
 &lt;/div&gt;</template><template title="ic_crypto_upgrade" type="public" version_id="1090013" version_string="1.9.0.13">&lt;xf:title&gt;Upgrade {$rig.RigType.rig_name}&lt;/xf:title&gt;
 
 &lt;div class="cryptoNav"&gt;
-	&lt;span class="cryptoNav-item"&gt;
+	&lt;a href="{{ link('crypto-mining') }}" class="cryptoNav-item"&gt;
 		&lt;span class="cryptoNav-icon"&gt;📊&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;&lt;a href="{{ link('crypto-mining') }}"&gt;Dashboard&lt;/a&gt;&lt;/span&gt;
-	&lt;/span&gt;
+		&lt;span class="cryptoNav-label"&gt;Dashboard&lt;/span&gt;
+	&lt;/a&gt;
 	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
+	&lt;div class="cryptoNav-item"&gt;
+		&lt;a class="cryptoNav-trigger menuTrigger" 
+		   data-xf-click="menu" 
+		   role="button" 
+		   tabindex="0"
+		   aria-expanded="false"
+		   aria-haspopup="true"&gt;
+			&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
+			&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
+			&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
+		&lt;/a&gt;
+		&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
+			&lt;div class="menu-content"&gt;
 				&lt;a href="{{ link('crypto-blocks') }}" class="menu-linkRow"&gt;⛏️ Block Competition&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
 				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
 			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
 		&lt;/div&gt;
 	&lt;/div&gt;
 	
@@ -7049,7 +6070,17 @@ window.initCryptoGrid = function() {
 	&lt;/div&gt;
 &lt;/div&gt;
 
-
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+	var toggles = document.querySelectorAll('.cryptoNav-toggle');
+	toggles.forEach(function(toggle) {
+		toggle.addEventListener('click', function(e) {
+			e.preventDefault();
+			this.parentElement.classList.toggle('cryptoNav-dropdown--active');
+		});
+	});
+});
+&lt;/script&gt;
 
 
 
@@ -7166,195 +6197,27 @@ window.initCryptoGrid = function() {
 &lt;/div&gt;</template><template title="ic_crypto_market" type="public" version_id="1090013" version_string="1.9.0.13">&lt;xf:title&gt;Cryptocurrency Marketplace&lt;/xf:title&gt;
 
 &lt;div class="cryptoNav"&gt;
-	&lt;span class="cryptoNav-item"&gt;
+	&lt;a href="{{ link('crypto-mining') }}" class="cryptoNav-item"&gt;
 		&lt;span class="cryptoNav-icon"&gt;📊&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;&lt;a href="{{ link('crypto-mining') }}"&gt;Dashboard&lt;/a&gt;&lt;/span&gt;
-	&lt;/span&gt;
+		&lt;span class="cryptoNav-label"&gt;Dashboard&lt;/span&gt;
+	&lt;/a&gt;
 	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
+	&lt;div class="cryptoNav-item"&gt;
+		&lt;a class="cryptoNav-trigger menuTrigger" 
+		   data-xf-click="menu" 
+		   role="button" 
+		   tabindex="0"
+		   aria-expanded="false"
+		   aria-haspopup="true"&gt;
+			&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
+			&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
+			&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
+		&lt;/a&gt;
+		&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
+			&lt;div class="menu-content"&gt;
 				&lt;a href="{{ link('crypto-blocks') }}" class="menu-linkRow"&gt;⛏️ Block Competition&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
 				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
 			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow is-selected"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow is-selected"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow is-selected"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
 		&lt;/div&gt;
 	&lt;/div&gt;
 	
@@ -7429,7 +6292,17 @@ window.initCryptoGrid = function() {
 	&lt;/div&gt;
 &lt;/div&gt;
 
-
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+	var toggles = document.querySelectorAll('.cryptoNav-toggle');
+	toggles.forEach(function(toggle) {
+		toggle.addEventListener('click', function(e) {
+			e.preventDefault();
+			this.parentElement.classList.toggle('cryptoNav-dropdown--active');
+		});
+	});
+});
+&lt;/script&gt;
 
 
 
@@ -7673,195 +6546,27 @@ window.initCryptoGrid = function() {
 &lt;/xf:js&gt;</template><template title="ic_crypto_leaderboard" type="public" version_id="1090013" version_string="1.9.0.13">&lt;xf:title&gt;Crypto Mining Leaderboards&lt;/xf:title&gt;
 
 &lt;div class="cryptoNav"&gt;
-	&lt;span class="cryptoNav-item"&gt;
+	&lt;a href="{{ link('crypto-mining') }}" class="cryptoNav-item"&gt;
 		&lt;span class="cryptoNav-icon"&gt;📊&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;&lt;a href="{{ link('crypto-mining') }}"&gt;Dashboard&lt;/a&gt;&lt;/span&gt;
-	&lt;/span&gt;
+		&lt;span class="cryptoNav-label"&gt;Dashboard&lt;/span&gt;
+	&lt;/a&gt;
 	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
+	&lt;div class="cryptoNav-item"&gt;
+		&lt;a class="cryptoNav-trigger menuTrigger" 
+		   data-xf-click="menu" 
+		   role="button" 
+		   tabindex="0"
+		   aria-expanded="false"
+		   aria-haspopup="true"&gt;
+			&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
+			&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
+			&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
+		&lt;/a&gt;
+		&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
+			&lt;div class="menu-content"&gt;
 				&lt;a href="{{ link('crypto-blocks') }}" class="menu-linkRow"&gt;⛏️ Block Competition&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
 				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
 			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow is-selected"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow is-selected"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow is-selected"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
 		&lt;/div&gt;
 	&lt;/div&gt;
 	
@@ -7936,7 +6641,17 @@ window.initCryptoGrid = function() {
 	&lt;/div&gt;
 &lt;/div&gt;
 
-
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+	var toggles = document.querySelectorAll('.cryptoNav-toggle');
+	toggles.forEach(function(toggle) {
+		toggle.addEventListener('click', function(e) {
+			e.preventDefault();
+			this.parentElement.classList.toggle('cryptoNav-dropdown--active');
+		});
+	});
+});
+&lt;/script&gt;
 
 
 
@@ -8148,195 +6863,27 @@ window.initCryptoGrid = function() {
 &lt;/xf:js&gt;</template><template type="public" title="ic_crypto_blocks" addon_id="IC/CryptoMining" version_id="1090013" version_string="1.9.0.13">&lt;xf:title&gt;Block Competition History&lt;/xf:title&gt;
 
 &lt;div class="cryptoNav"&gt;
-	&lt;span class="cryptoNav-item"&gt;
+	&lt;a href="{{ link('crypto-mining') }}" class="cryptoNav-item"&gt;
 		&lt;span class="cryptoNav-icon"&gt;📊&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;&lt;a href="{{ link('crypto-mining') }}"&gt;Dashboard&lt;/a&gt;&lt;/span&gt;
-	&lt;/span&gt;
+		&lt;span class="cryptoNav-label"&gt;Dashboard&lt;/span&gt;
+	&lt;/a&gt;
 	
-	&lt;span class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
+	&lt;div class="cryptoNav-item"&gt;
+		&lt;a class="cryptoNav-trigger menuTrigger cryptoNav-item--active" 
+		   data-xf-click="menu" 
+		   role="button" 
+		   tabindex="0"
+		   aria-expanded="false"
+		   aria-haspopup="true"&gt;
+			&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
+			&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
+			&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
+		&lt;/a&gt;
+		&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
+			&lt;div class="menu-content"&gt;
 				&lt;a href="{{ link('crypto-blocks') }}" class="menu-linkRow is-selected"&gt;⛏️ Block Competition&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
 				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
 			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
 		&lt;/div&gt;
 	&lt;/div&gt;
 	
@@ -8411,7 +6958,17 @@ window.initCryptoGrid = function() {
 	&lt;/div&gt;
 &lt;/div&gt;
 
-
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+	var toggles = document.querySelectorAll('.cryptoNav-toggle');
+	toggles.forEach(function(toggle) {
+		toggle.addEventListener('click', function(e) {
+			e.preventDefault();
+			this.parentElement.classList.toggle('cryptoNav-dropdown--active');
+		});
+	});
+});
+&lt;/script&gt;
 
 
 
@@ -8492,195 +7049,27 @@ window.initCryptoGrid = function() {
 &lt;/div&gt;</template><template title="ic_crypto_transactions" type="public" version_id="1090013" version_string="1.9.0.13">&lt;xf:title&gt;Transaction History&lt;/xf:title&gt;
 
 &lt;div class="cryptoNav"&gt;
-	&lt;span class="cryptoNav-item"&gt;
+	&lt;a href="{{ link('crypto-mining') }}" class="cryptoNav-item"&gt;
 		&lt;span class="cryptoNav-icon"&gt;📊&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;&lt;a href="{{ link('crypto-mining') }}"&gt;Dashboard&lt;/a&gt;&lt;/span&gt;
-	&lt;/span&gt;
+		&lt;span class="cryptoNav-label"&gt;Dashboard&lt;/span&gt;
+	&lt;/a&gt;
 	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
+	&lt;div class="cryptoNav-item"&gt;
+		&lt;a class="cryptoNav-trigger menuTrigger" 
+		   data-xf-click="menu" 
+		   role="button" 
+		   tabindex="0"
+		   aria-expanded="false"
+		   aria-haspopup="true"&gt;
+			&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
+			&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
+			&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
+		&lt;/a&gt;
+		&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
+			&lt;div class="menu-content"&gt;
 				&lt;a href="{{ link('crypto-blocks') }}" class="menu-linkRow"&gt;⛏️ Block Competition&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
 				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
 			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow is-selected"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow is-selected"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow is-selected"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
 		&lt;/div&gt;
 	&lt;/div&gt;
 	
@@ -8755,7 +7144,17 @@ window.initCryptoGrid = function() {
 	&lt;/div&gt;
 &lt;/div&gt;
 
-
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+	var toggles = document.querySelectorAll('.cryptoNav-toggle');
+	toggles.forEach(function(toggle) {
+		toggle.addEventListener('click', function(e) {
+			e.preventDefault();
+			this.parentElement.classList.toggle('cryptoNav-dropdown--active');
+		});
+	});
+});
+&lt;/script&gt;
 
 
 
@@ -8947,195 +7346,27 @@ window.initCryptoGrid = function() {
 &lt;/div&gt;</template><template type="public" title="ic_crypto_achievements" version_id="1090100" version_string="1.9.1.0">&lt;xf:title&gt;Achievements&lt;/xf:title&gt;
 
 &lt;div class="cryptoNav"&gt;
-	&lt;span class="cryptoNav-item"&gt;
+	&lt;a href="{{ link('crypto-mining') }}" class="cryptoNav-item"&gt;
 		&lt;span class="cryptoNav-icon"&gt;📊&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;&lt;a href="{{ link('crypto-mining') }}"&gt;Dashboard&lt;/a&gt;&lt;/span&gt;
-	&lt;/span&gt;
+		&lt;span class="cryptoNav-label"&gt;Dashboard&lt;/span&gt;
+	&lt;/a&gt;
 	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
+	&lt;div class="cryptoNav-item"&gt;
+		&lt;a class="cryptoNav-trigger menuTrigger" 
+		   data-xf-click="menu" 
+		   role="button" 
+		   tabindex="0"
+		   aria-expanded="false"
+		   aria-haspopup="true"&gt;
+			&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
+			&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
+			&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
+		&lt;/a&gt;
+		&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
+			&lt;div class="menu-content"&gt;
 				&lt;a href="{{ link('crypto-blocks') }}" class="menu-linkRow"&gt;⛏️ Block Competition&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
 				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
 			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow is-selected"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow is-selected"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow is-selected"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
 		&lt;/div&gt;
 	&lt;/div&gt;
 	
@@ -9210,7 +7441,17 @@ window.initCryptoGrid = function() {
 	&lt;/div&gt;
 &lt;/div&gt;
 
-
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+	var toggles = document.querySelectorAll('.cryptoNav-toggle');
+	toggles.forEach(function(toggle) {
+		toggle.addEventListener('click', function(e) {
+			e.preventDefault();
+			this.parentElement.classList.toggle('cryptoNav-dropdown--active');
+		});
+	});
+});
+&lt;/script&gt;
 
 
 
@@ -9335,197 +7576,28 @@ window.initCryptoGrid = function() {
 	&lt;/xf:foreach&gt;
 &lt;/div&gt;</template><template type="public" title="ic_crypto_grid" version_id="1110001" version_string="1.11.0.1">&lt;xf:title&gt;Mining Expedition Grid&lt;/xf:title&gt;
 
-
 &lt;div class="cryptoNav"&gt;
-	&lt;span class="cryptoNav-item"&gt;
+	&lt;a href="{{ link('crypto-mining') }}" class="cryptoNav-item"&gt;
 		&lt;span class="cryptoNav-icon"&gt;📊&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;&lt;a href="{{ link('crypto-mining') }}"&gt;Dashboard&lt;/a&gt;&lt;/span&gt;
-	&lt;/span&gt;
+		&lt;span class="cryptoNav-label"&gt;Dashboard&lt;/span&gt;
+	&lt;/a&gt;
 	
-	&lt;span class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
+	&lt;div class="cryptoNav-item"&gt;
+		&lt;a class="cryptoNav-trigger menuTrigger cryptoNav-item--active" 
+		   data-xf-click="menu" 
+		   role="button" 
+		   tabindex="0"
+		   aria-expanded="false"
+		   aria-haspopup="true"&gt;
+			&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
+			&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
+			&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
+		&lt;/a&gt;
+		&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
+			&lt;div class="menu-content"&gt;
 				&lt;a href="{{ link('crypto-blocks') }}" class="menu-linkRow"&gt;⛏️ Block Competition&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
 				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow is-selected"&gt;🗺️ Expedition Grid&lt;/a&gt;
 			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow is-selected"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow is-selected"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
 		&lt;/div&gt;
 	&lt;/div&gt;
 	
@@ -9600,15 +7672,24 @@ window.initCryptoGrid = function() {
 	&lt;/div&gt;
 &lt;/div&gt;
 
-
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+	var toggles = document.querySelectorAll('.cryptoNav-toggle');
+	toggles.forEach(function(toggle) {
+		toggle.addEventListener('click', function(e) {
+			e.preventDefault();
+			this.parentElement.classList.toggle('cryptoNav-dropdown--active');
+		});
+	});
+});
+&lt;/script&gt;
 
 
 
 
 &lt;xf:css src="ic_crypto.less" /&gt;
 
-
-
+&lt;!-- Page Navigation --&gt;
 
 
 &lt;div class="cryptoMiningContainer"&gt;
@@ -9733,225 +7814,107 @@ window.initCryptoGrid = function() {
 		&lt;div class="cryptoGrid-modalStats" id="resultStats"&gt;&lt;/div&gt;
 		&lt;button class="cryptoButton cryptoButton--primary" onclick="closeResultModal()"&gt;Continue Mining&lt;/button&gt;
 	&lt;/div&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+&lt;/div&gt;
 
 &lt;script&gt;
-document.addEventListener('DOMContentLoaded', function() {
-	if (typeof window.initCryptoGrid === 'function') {
-		window.initCryptoGrid();
-	} else {
-		console.error('initCryptoGrid function not found');
+// Mining Grid JavaScript
+const gridElement = document.getElementById('miningGrid');
+
+// Click handler for grid blocks
+if (gridElement) {
+	gridElement.addEventListener('click', function(e) {
+		const block = e.target.closest('.cryptoGrid-block');
+		if (!block || block.classList.contains('is-mined')) return;
+		
+		const position = parseInt(block.dataset.position);
+		const rigId = document.getElementById('selectedRig')?.value;
+		const useInsurance = document.getElementById('useInsurance')?.checked || false;
+		
+		if (!rigId) {
+			alert('Please select a mining rig first!');
+			return;
+		}
+		
+		// Disable clicking while mining
+		block.style.pointerEvents = 'none';
+		block.classList.add('is-mining');
+		
+		// Create and submit form
+		const form = document.createElement('form');
+		form.method = 'POST';
+		form.action = XF.canonicalizeUrl('crypto-grid/mine');
+		
+		const posField = document.createElement('input');
+		posField.type = 'hidden';
+		posField.name = 'position';
+		posField.value = position;
+		form.appendChild(posField);
+		
+		const rigField = document.createElement('input');
+		rigField.type = 'hidden';
+		rigField.name = 'rig_id';
+		rigField.value = rigId;
+		form.appendChild(rigField);
+		
+		const insField = document.createElement('input');
+		insField.type = 'hidden';
+		insField.name = 'use_insurance';
+		insField.value = useInsurance ? 1 : 0;
+		form.appendChild(insField);
+		
+		// Add CSRF token
+		const csrfField = document.createElement('input');
+		csrfField.type = 'hidden';
+		csrfField.name = '_xfToken';
+		csrfField.value = XF.config.csrf;
+		form.appendChild(csrfField);
+		
+		document.body.appendChild(form);
+		form.submit();
+	});
+}
+
+function updateRigDurability(rigId, newDurability) {
+	const option = document.querySelector('#selectedRig option[value="' + rigId + '"]');
+	if (option) {
+		option.dataset.durability = newDurability;
+		option.textContent = option.textContent.replace(/\(Durability: [\d.]+%\)/, '(Durability: ' + newDurability.toFixed(1) + '%)');
+		
+		// If durability too low, disable option
+		if (newDurability &lt;= 20) {
+			option.disabled = true;
+			option.textContent += ' - TOO LOW!';
+			// Auto-deselect if this was selected
+			if (document.getElementById('selectedRig').value == rigId) {
+				document.getElementById('selectedRig').value = '';
+			}
+		}
 	}
-});
-&lt;/script&gt;
-
-&lt;/div&gt;
-
-</template><template type="public" title="ic_crypto_scrapyard" version_id="1110000" version_string="1.11.0.0">&lt;xf:title&gt;Scrapyard&lt;/xf:title&gt;
+}
+&lt;/script&gt;</template><template type="public" title="ic_crypto_scrapyard" version_id="1110000" version_string="1.11.0.0">&lt;xf:title&gt;Scrapyard&lt;/xf:title&gt;
 
 &lt;div class="cryptoNav"&gt;
-	&lt;span class="cryptoNav-item"&gt;
+	&lt;a href="{{ link('crypto-mining') }}" class="cryptoNav-item"&gt;
 		&lt;span class="cryptoNav-icon"&gt;📊&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;&lt;a href="{{ link('crypto-mining') }}"&gt;Dashboard&lt;/a&gt;&lt;/span&gt;
-	&lt;/span&gt;
+		&lt;span class="cryptoNav-label"&gt;Dashboard&lt;/span&gt;
+	&lt;/a&gt;
 	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
+	&lt;div class="cryptoNav-item"&gt;
+		&lt;a class="cryptoNav-trigger menuTrigger" 
+		   data-xf-click="menu" 
+		   role="button" 
+		   tabindex="0"
+		   aria-expanded="false"
+		   aria-haspopup="true"&gt;
+			&lt;span class="cryptoNav-icon"&gt;🎮&lt;/span&gt;
+			&lt;span class="cryptoNav-label"&gt;Mining&lt;/span&gt;
+			&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
+		&lt;/a&gt;
+		&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
+			&lt;div class="menu-content"&gt;
 				&lt;a href="{{ link('crypto-blocks') }}" class="menu-linkRow"&gt;⛏️ Block Competition&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
 				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
 			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow is-selected"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;span class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		
-	&lt;/span&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow is-selected"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-grid') }}" class="menu-linkRow"&gt;🗺️ Expedition Grid&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger cryptoNav-item--active" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🛒&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Shop &amp; Market&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-shop') }}" class="menu-linkRow"&gt;🛒 Rig Shop&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-market') }}" class="menu-linkRow"&gt;💱 Marketplace&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-scrapyard') }}" class="menu-linkRow is-selected"&gt;♻️ Scrapyard&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	
-	&lt;a class="cryptoNav-item menuTrigger" 
-	   data-xf-click="menu" 
-	   role="button" 
-	   tabindex="0"
-	   aria-expanded="false"
-	   aria-haspopup="true"&gt;
-		&lt;span class="cryptoNav-icon"&gt;🏆&lt;/span&gt;
-		&lt;span class="cryptoNav-label"&gt;Stats&lt;/span&gt;
-		&lt;span class="cryptoNav-arrow"&gt;▼&lt;/span&gt;
-	&lt;/a&gt;
-	&lt;div class="menu" data-menu="menu" aria-hidden="true"&gt;
-		&lt;div class="menu-content"&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-achievements') }}" class="menu-linkRow"&gt;🏆 Achievements&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-leaderboard') }}" class="menu-linkRow"&gt;📊 Leaderboards&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="menu-row"&gt;
-				&lt;a href="{{ link('crypto-transactions') }}" class="menu-linkRow"&gt;📜 Transactions&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-
-
 		&lt;/div&gt;
 	&lt;/div&gt;
 	
@@ -10026,7 +7989,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	&lt;/div&gt;
 &lt;/div&gt;
 
-
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+	var toggles = document.querySelectorAll('.cryptoNav-toggle');
+	toggles.forEach(function(toggle) {
+		toggle.addEventListener('click', function(e) {
+			e.preventDefault();
+			this.parentElement.classList.toggle('cryptoNav-dropdown--active');
+		});
+	});
+});
+&lt;/script&gt;
 
 
 

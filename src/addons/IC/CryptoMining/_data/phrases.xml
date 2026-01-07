@@ -1,10 +1,125 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <phrases>
-	<phrase title="ic_crypto_insufficient_credits" version_id="1000004" version_string="1.0.4"><![CDATA[You do not have enough credits to purchase this mining rig.]]></phrase>
-	<phrase title="ic_crypto_level_required" version_id="1000004" version_string="1.0.4"><![CDATA[You need to be level {level} or higher to purchase this rig.]]></phrase>
-	<phrase title="ic_crypto_rig_not_available" version_id="1000004" version_string="1.0.4"><![CDATA[This mining rig is not currently available for purchase.]]></phrase>
-	<phrase title="ic_crypto_rig_not_found" version_id="1000004" version_string="1.0.4"><![CDATA[The requested mining rig could not be found.]]></phrase>
-	<phrase title="ic_crypto_purchase_error" version_id="1000004" version_string="1.0.4"><![CDATA[An error occurred while processing your purchase. Please try again.]]></phrase>
-	<phrase title="ic_crypto_rig_purchased" version_id="1000004" version_string="1.0.4"><![CDATA[Successfully purchased {rig}! Your new rig is now mining.]]></phrase>
-	<phrase title="ic_crypto_max_upgrade_level" version_id="1000004" version_string="1.0.4"><![CDATA[This rig is already at maximum upgrade level.]]></phrase>
-</phrases>
+	
+	<phrase title="navigation.icCryptoMining" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">Crypto Mining</phrase>
+	<phrase title="navigation.icCM_dashboard" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">Dashboard</phrase>
+	<phrase title="navigation.icCM_shop" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">Rig Shop</phrase>
+	
+	<phrase title="permission_interface_group.icCMPerms" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">Crypto Mining permissions</phrase>
+	
+	<phrase title="permission.icCryptoMining_view" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">View crypto mining</phrase>
+	<phrase title="permission.icCryptoMining_mine" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">Purchase rigs and mine crypto</phrase>
+	
+	<phrase title="ic_crypto_insufficient_credits" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">You do not have enough credits to purchase this mining rig.</phrase>
+	<phrase title="ic_crypto_level_required" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">You need to be level {level} or higher to purchase this rig.</phrase>
+	<phrase title="ic_crypto_rig_not_available" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">This mining rig is not currently available for purchase.</phrase>
+	<phrase title="ic_crypto_rig_not_found" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">The requested mining rig could not be found.</phrase>
+	<phrase title="ic_crypto_purchase_error" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">An error occurred while processing your purchase. Please try again.</phrase>
+	<phrase title="ic_crypto_rig_purchased" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">Successfully purchased {rig}! Your new rig is now mining.</phrase>
+	<phrase title="ic_crypto_max_upgrade_level" version_id="1000004" version_string="1.0.4" addon_id="IC/CryptoMining">This rig is already at maximum upgrade level.</phrase>
+	
+	<phrase title="nav.icCryptoMining" version_id="1005000" version_string="1.5.0">💎 Crypto Mining</phrase>
+	<phrase title="nav.icCM_dashboard" version_id="1005000" version_string="1.5.0">Dashboard</phrase>
+	<phrase title="nav.icCM_shop" version_id="1005000" version_string="1.5.0">Rig Shop</phrase>
+	<phrase title="nav.icCryptoMarket" version_id="1005000" version_string="1.5.0">Marketplace</phrase>
+	
+	<phrase title="cron_entry.icCryptoMiningUpdate" version_id="1005001" version_string="1.5.1">Update Cryptocurrency Mining</phrase>
+	<phrase title="cron_entry.icCryptoMiningUpdate_desc" version_id="1005001" version_string="1.5.1">Processes mining rewards, power costs, and durability degradation for all active rigs.</phrase>
+	<phrase title="ic_crypto_addon_title" version_id="1005001" version_string="1.5.1">Crypto Mining Simulation</phrase>
+	<phrase title="ic_crypto_addon_desc" version_id="1005001" version_string="1.5.1">Mine Bitcoin, build your empire, dominate the leaderboards!</phrase>
+	<phrase title="ic_crypto_repair_rig" version_id="1005001" version_string="1.5.1">Repair Rig</phrase>
+	<phrase title="ic_crypto_upgrade_rig" version_id="1005001" version_string="1.5.1">Upgrade Rig</phrase>
+	<phrase title="ic_crypto_pause_rig" version_id="1005001" version_string="1.5.1">Pause Mining</phrase>
+	<phrase title="ic_crypto_resume_rig" version_id="1005001" version_string="1.5.1">Resume Mining</phrase>
+	<phrase title="ic_crypto_sell_crypto" version_id="1005001" version_string="1.5.1">Sell Bitcoin</phrase>
+	<phrase title="ic_crypto_rig_paused" version_id="1005001" version_string="1.5.1">Mining Paused</phrase>
+	<phrase title="ic_crypto_rig_active" version_id="1005001" version_string="1.5.1">Mining Active</phrase>
+	<phrase title="ic_crypto_low_durability" version_id="1005001" version_string="1.5.1">Low Durability - Repair Recommended</phrase>
+	<phrase title="ic_crypto_critical_durability" version_id="1005001" version_string="1.5.1">Critical Durability - Repair Now!</phrase>
+	<phrase title="ic_crypto_rig_broken" version_id="1005001" version_string="1.5.1">Rig Broken - Must Repair</phrase>
+	
+	<phrase title="nav.icCryptoLeaderboard" version_id="1006000" version_string="1.6.0">🏆 Leaderboards</phrase>
+	<phrase title="ic_crypto_leaderboard_richest" version_id="1006000" version_string="1.6.0">Richest Miners</phrase>
+	<phrase title="ic_crypto_leaderboard_most_mined" version_id="1006000" version_string="1.6.0">Mining Tycoons</phrase>
+	<phrase title="ic_crypto_leaderboard_most_efficient" version_id="1006000" version_string="1.6.0">Efficiency Masters</phrase>
+	<phrase title="ic_crypto_leaderboard_most_rigs" version_id="1006000" version_string="1.6.0">Empire Builders</phrase>
+	<phrase title="ic_crypto_leaderboard_current_balance" version_id="1006000" version_string="1.6.0">Current BTC Balance</phrase>
+	<phrase title="ic_crypto_leaderboard_lifetime_mined" version_id="1006000" version_string="1.6.0">Total BTC Mined (Lifetime)</phrase>
+	<phrase title="ic_crypto_leaderboard_avg_durability" version_id="1006000" version_string="1.6.0">Average Fleet Durability</phrase>
+	<phrase title="ic_crypto_leaderboard_rig_count" version_id="1006000" version_string="1.6.0">Total Rigs Owned</phrase>
+	<phrase title="ic_crypto_your_rank" version_id="1006000" version_string="1.6.0">Your Rank</phrase>
+	<phrase title="ic_crypto_not_ranked" version_id="1006000" version_string="1.6.0">Not Ranked Yet</phrase>
+	<phrase title="ic_crypto_total_participants" version_id="1006000" version_string="1.6.0">Total Participants</phrase>
+	
+	<phrase title="cron_entry.icCryptoLeaderboardUpdate" version_id="1006000" version_string="1.6.0">Update Crypto Mining Leaderboards</phrase>
+	<phrase title="option_group.icCryptoMining" version_id="1006000" version_string="1.6.0">Crypto Mining Simulation</phrase>
+	<phrase title="option_group_description.icCryptoMining" version_id="1006000" version_string="1.6.0">Configure cryptocurrency mining simulation settings</phrase>
+	<phrase title="option_explain.ic_crypto_starting_balance" version_id="1006000" version_string="1.6.0">Initial credits given to new miners when their wallet is created</phrase>
+	<phrase title="option_explain.ic_crypto_btc_price" version_id="1006000" version_string="1.6.0">Base price for Bitcoin in USD (before market fluctuations)</phrase>
+	<phrase title="option_explain.ic_crypto_repair_cost_multiplier" version_id="1006000" version_string="1.6.0">Multiplier for repair costs (e.g., 0.10 = 10% of rig purchase price)</phrase>
+	<phrase title="option.ic_crypto_durability_rate" version_id="1006000" version_string="1.6.0">Durability degradation rate</phrase>
+	<phrase title="option_explain.ic_crypto_durability_rate" version_id="1006000" version_string="1.6.0">Percentage of durability lost per day (e.g., 2.0 = 2% per day, rigs last ~50 days)</phrase>
+	<phrase title="option_explain.ic_crypto_power_costs_enabled" version_id="1006000" version_string="1.6.0">Deduct power consumption costs from miners' credit balances</phrase>
+	<phrase title="option.ic_crypto_leaderboard_enabled" version_id="1006000" version_string="1.6.0">Enable leaderboards</phrase>
+	<phrase title="option_explain.ic_crypto_leaderboard_enabled" version_id="1006000" version_string="1.6.0">Update and display competitive mining leaderboards</phrase>
+	<phrase title="option.ic_crypto_cron_logging" version_id="1006000" version_string="1.6.0">Enable cron debug logging</phrase>
+	<phrase title="option_explain.ic_crypto_cron_logging" version_id="1006000" version_string="1.6.0">Log detailed mining cron information (for troubleshooting only, creates lots of log entries!)</phrase>
+	
+	<phrase title="cron_entry.icCryptoBlockCompetition" version_id="1070000" version_string="1.7.0">Process Block Competition</phrase>
+	<phrase title="cron_entry.icCryptoBlockCompetition_desc" version_id="1070000" version_string="1.7.0">Solves current mining block, awards winner, and spawns next block. Runs every 6 hours.</phrase>
+	
+	<phrase title="navigation.icCryptoBlocks" version_id="1080000" version_string="1.8.0">Blocks</phrase>
+	<phrase title="navigation.icCryptoTransactions" version_id="1080100" version_string="1.8.1">Transactions</phrase>
+	<phrase title="nav.icCryptoBlocks" version_id="1080100" version_string="1.8.1">Blocks</phrase>
+	<phrase title="nav.icCryptoGrid" version_id="1100002" version_string="1.10.0.2">Expedition Grid</phrase>
+	<phrase title="nav.icCryptoTransactions" version_id="1080100" version_string="1.8.1">Transactions</phrase>
+	<phrase title="cron_entry.icCryptoUpdateMarket" version_id="1080300" version_string="1.8.3">Update Bitcoin Market Prices</phrase>
+	
+	<phrase title="navigation.icCryptoAchievements" version_id="1090006" version_string="1.9.0.6" addon_id="IC/CryptoMining">Achievements</phrase>
+	<phrase title="ic_crypto_achievement_earned_x" version_id="1090006" version_string="1.9.0.6" addon_id="IC/CryptoMining">Achievement earned: {title}</phrase>
+	<phrase title="ic_crypto_achievements" version_id="1090006" version_string="1.9.0.6" addon_id="IC/CryptoMining">Achievements</phrase>
+	<phrase title="ic_crypto_transaction_type.achievement_reward" version_id="1090006" version_string="1.9.0.6" addon_id="IC/CryptoMining">Achievement Reward</phrase>
+	
+	
+	<phrase title="ic_crypto_achievement_title.first_dig" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">First Dig</phrase>
+	<phrase title="ic_crypto_achievement_title.prospector" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Prospector</phrase>
+	<phrase title="ic_crypto_achievement_title.gold_rush" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Gold Rush</phrase>
+	<phrase title="ic_crypto_achievement_title.mining_empire" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Mining Empire</phrase>
+	<phrase title="ic_crypto_achievement_title.industrial_scale" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Industrial Scale</phrase>
+	<phrase title="ic_crypto_achievement_title.first_sale" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">First Sale</phrase>
+	<phrase title="ic_crypto_achievement_title.market_trader" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Market Trader</phrase>
+	<phrase title="ic_crypto_achievement_title.whale" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Whale</phrase>
+	<phrase title="ic_crypto_achievement_title.crypto_holder" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Crypto Holder</phrase>
+	<phrase title="ic_crypto_achievement_title.bitcoin_millionaire" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Bitcoin Millionaire</phrase>
+	<phrase title="ic_crypto_achievement_title.maintenance_master" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Maintenance Master</phrase>
+	<phrase title="ic_crypto_achievement_title.tech_upgrade" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Tech Upgrade</phrase>
+	<phrase title="ic_crypto_achievement_title.well_oiled_machine" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Well-Oiled Machine</phrase>
+	<phrase title="ic_crypto_achievement_title.block_winner" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Block Winner</phrase>
+	<phrase title="ic_crypto_achievement_title.top_miner" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Top Miner</phrase>
+	
+	
+	<phrase title="ic_crypto_achievement_desc.first_dig" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Purchase your first mining rig to begin your crypto journey.</phrase>
+	<phrase title="ic_crypto_achievement_desc.prospector" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Mine your first Bitcoin and taste the rewards of digital gold.</phrase>
+	<phrase title="ic_crypto_achievement_desc.gold_rush" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Mine 10 BTC total and establish yourself as a serious miner.</phrase>
+	<phrase title="ic_crypto_achievement_desc.mining_empire" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Own 5 mining rigs simultaneously to build your mining empire.</phrase>
+	<phrase title="ic_crypto_achievement_desc.industrial_scale" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Own 10 mining rigs and achieve industrial-scale operations.</phrase>
+	<phrase title="ic_crypto_achievement_desc.first_sale" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Sell cryptocurrency for the first time and convert digital to credits.</phrase>
+	<phrase title="ic_crypto_achievement_desc.market_trader" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Complete 10 crypto trades and prove your market savvy.</phrase>
+	<phrase title="ic_crypto_achievement_desc.whale" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Sell 10+ BTC in a single transaction like a true crypto whale.</phrase>
+	<phrase title="ic_crypto_achievement_desc.crypto_holder" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Hold 5 BTC in your wallet and secure your digital wealth.</phrase>
+	<phrase title="ic_crypto_achievement_desc.bitcoin_millionaire" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Achieve $1,000,000 portfolio value and join the elite.</phrase>
+	<phrase title="ic_crypto_achievement_desc.maintenance_master" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Repair a mining rig and keep your equipment running smoothly.</phrase>
+	<phrase title="ic_crypto_achievement_desc.tech_upgrade" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Upgrade a rig to level 5 and maximize your mining potential.</phrase>
+	<phrase title="ic_crypto_achievement_desc.well_oiled_machine" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Maintain all rigs above 80% durability for peak efficiency.</phrase>
+	<phrase title="ic_crypto_achievement_desc.block_winner" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Win a block competition and claim the grand prize.</phrase>
+	<phrase title="ic_crypto_achievement_desc.top_miner" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Reach the top 10 on the richest miners leaderboard.</phrase>
+	
+	
+	<phrase title="ic_crypto_difficulty.easy" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Easy</phrase>
+	<phrase title="ic_crypto_difficulty.medium" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Medium</phrase>
+	<phrase title="ic_crypto_difficulty.hard" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Hard</phrase>
+	<phrase title="ic_crypto_difficulty.very_hard" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Very Hard</phrase>
+	<phrase title="ic_crypto_difficulty.epic" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Epic</phrase>
+	<phrase title="ic_crypto_difficulty.legendary" version_id="1090013" version_string="1.9.0.13" addon_id="IC/CryptoMining">Legendary</phrase>
+
+<phrase title="ic_crypto_transaction_type.grid_mine" version_id="1100005" version_string="1.10.0.5" addon_id="IC/CryptoMining">Expedition Mining</phrase><phrase title="ic_crypto_scrapyard_title" version_id="1110000" version_string="1.11.0.0" addon_id="IC/CryptoMining">Scrapyard</phrase><phrase title="ic_crypto_scrapyard_desc" version_id="1110000" version_string="1.11.0.0" addon_id="IC/CryptoMining">Sell broken rigs for partial refund</phrase><phrase title="ic_crypto_rig_scrapped" version_id="1110000" version_string="1.11.0.0" addon_id="IC/CryptoMining">Scrapped {rig_name} for {credits} credits!</phrase><phrase title="ic_crypto_scrapyard_empty" version_id="1110000" version_string="1.11.0.0" addon_id="IC/CryptoMining">You have no rigs to scrap. Rigs must be at 20% durability or below.</phrase><phrase title="ic_crypto_scrapyard_scrapable" version_id="1110000" version_string="1.11.0.0" addon_id="IC/CryptoMining">Scrapable Rigs</phrase><phrase title="ic_crypto_scrapyard_active" version_id="1110000" version_string="1.11.0.0" addon_id="IC/CryptoMining">Active Rigs (Not Scrapable)</phrase><phrase title="ic_crypto_transaction_type.scrap_rig" version_id="1110000" version_string="1.11.0.0" addon_id="IC/CryptoMining">Rig Scrapped</phrase><phrase title="ic_crypto_achievement_title.recycler" version_id="1110000" version_string="1.11.0.0" addon_id="IC/CryptoMining">Recycler</phrase><phrase title="ic_crypto_achievement_desc.recycler" version_id="1110000" version_string="1.11.0.0" addon_id="IC/CryptoMining">Scrap 5 mining rigs.</phrase><phrase title="ic_crypto_achievement_title.scrapyard_king" version_id="1110000" version_string="1.11.0.0" addon_id="IC/CryptoMining">Scrapyard King</phrase><phrase title="ic_crypto_achievement_desc.scrapyard_king" version_id="1110000" version_string="1.11.0.0" addon_id="IC/CryptoMining">Scrap 25 mining rigs.</phrase></phrases>

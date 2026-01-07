@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<cron>
+    <entry entry_id="icCryptoMiningUpdate" cron_class="IC\CryptoMining\Cron\UpdateMining" cron_method="runUpdate" active="1">{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[0]}<title>Update Cryptocurrency Mining</title>
+        <description>Processes mining rewards, power costs, and durability degradation for all active rigs.</description>
+    </entry>
+    <entry entry_id="icCryptoLeaderboardUpdate" cron_class="IC\CryptoMining\Cron\UpdateLeaderboard" cron_method="runUpdate" active="1">{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[30]}<title>Update Crypto Mining Leaderboards</title>
+        <description>Calculates and caches leaderboard rankings for richest miners, most mined, efficiency masters, and empire builders.</description>
+    </entry>
+    <entry entry_id="icCryptoBlockCompetition" cron_class="IC\CryptoMining\Cron\ProcessBlocks" cron_method="runUpdate" active="1">{"day_type":"dom","dom":[-1],"hours":[0,6,12,18],"minutes":[0]}<title>Process Block Competition</title>
+        <description>Solves current mining block, awards winner, and spawns next block. Runs every 6 hours (00:00, 06:00, 12:00, 18:00).</description>
+    </entry>
+<entry entry_id="icCryptoUpdateMarket" cron_class="IC\CryptoMining\Cron\UpdateMarket" cron_method="runUpdate" active="1">{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}<title>Update Bitcoin Market Prices</title><description>Updates Bitcoin market prices with daily fluctuations and triggers random market events.</description></entry></cron>

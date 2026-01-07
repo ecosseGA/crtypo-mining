@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <permissions>
-	<permission_group permission_group_id="icCryptoMining">
-		<title>Crypto Mining</title>
-	</permission_group>
-	
-	<permission permission_group_id="icCryptoMining" permission_id="view" permission_type="flag" interface_group_id="general" display_order="10">
-		<title>View crypto mining</title>
-		<permission_value>allow</permission_value>
-	</permission>
-	
-	<permission permission_group_id="icCryptoMining" permission_id="mine" permission_type="flag" interface_group_id="general" display_order="20">
-		<title>Purchase rigs and mine crypto</title>
-		<permission_value>allow</permission_value>
-	</permission>
+  <permission permission_group_id="icCryptoMining" permission_id="view" permission_type="flag" interface_group_id="icCMPerms" display_order="10"/>
+  <permission permission_group_id="icCryptoMining" permission_id="mine" permission_type="flag" interface_group_id="icCMPerms" display_order="20"/>
 </permissions>

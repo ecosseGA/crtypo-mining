@@ -1,5 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <routes>
-	<route route_type="public" route_prefix="crypto-shop" controller="IC\CryptoMining:Shop" context="" action_prefix="" />
-	<route route_type="public" route_prefix="crypto-mining" controller="IC\CryptoMining:Dashboard" context="" action_prefix="" />
+    <route route_type="public" route_prefix="crypto-shop" controller="IC\CryptoMining:Shop" format=":int&lt;rig_type_id&gt;" context="" action_prefix="" addon_id="IC/CryptoMining" />
+    <route route_type="public" route_prefix="crypto-mining" controller="IC\CryptoMining:Dashboard" context="" action_prefix="" addon_id="IC/CryptoMining" />
+    <route route_type="public" route_prefix="crypto-repair" controller="IC\CryptoMining:Repair" format=":int&lt;user_rig_id&gt;" context="" action_prefix="" addon_id="IC/CryptoMining" />
+    <route route_type="public" route_prefix="crypto-upgrade" controller="IC\CryptoMining:Upgrade" format=":int&lt;user_rig_id&gt;" context="" action_prefix="" addon_id="IC/CryptoMining" />
+    <route route_type="public" route_prefix="crypto-toggle" controller="IC\CryptoMining:Toggle" format=":int&lt;user_rig_id&gt;" context="" action_prefix="" addon_id="IC/CryptoMining" />
+    <route route_type="public" route_prefix="crypto-market" controller="IC\CryptoMining:Market" context="" action_prefix="" addon_id="IC/CryptoMining" />
+    <route route_type="public" route_prefix="crypto-leaderboard" controller="IC\CryptoMining:Leaderboard" context="" action_prefix="" addon_id="IC/CryptoMining" />
+    <route route_type="public" route_prefix="crypto-blocks" controller="IC\CryptoMining:Blocks" context="" action_prefix="" addon_id="IC/CryptoMining" />
+    <route route_type="public" route_prefix="crypto-grid" controller="IC\CryptoMining:Grid" context="" action_prefix="" addon_id="IC/CryptoMining" />
+    <route route_type="public" route_prefix="crypto-transactions" controller="IC\CryptoMining:Transactions" context="" action_prefix="" addon_id="IC/CryptoMining" />
+    <route route_type="public" route_prefix="crypto-achievements" controller="IC\CryptoMining:Achievements" context="" action_prefix="" addon_id="IC/CryptoMining" />
+    <route route_type="public" route_prefix="crypto-scrapyard" controller="IC\CryptoMining:Scrapyard" context="" action_prefix="" addon_id="IC/CryptoMining" />
 </routes>
