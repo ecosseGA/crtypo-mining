@@ -35,7 +35,9 @@ class UpdateMarket
 			$currentPrice = $market['current_price'];
 			
 			// ========== BASE RANDOM FLUCTUATION (-5% to +5%) ==========
-			$randomFactor = mt_rand(-500, 500) / 10000; // CORRECT - allows negatives
+			$maxFluctuation = (float)(\XF::options()->ic_crypto_market_fluctuation ?? 0.05);
+			$randomFactor = (mt_rand((int)(-$maxFluctuation * 10000), (int)($maxFluctuation * 10000)) / 10000);
+ 			// CORRECT - allows negatives
 			
 			// ========== CHECK FOR ACTIVE EVENTS ==========
 			$activeEvent = $db->fetchRow("
