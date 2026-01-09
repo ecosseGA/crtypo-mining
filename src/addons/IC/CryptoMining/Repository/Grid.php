@@ -71,11 +71,11 @@ class Grid extends Repository
 					$durabilityCost = 0.0;
 					break;
 				case 'standard':
-					$btcValue = 0.01;
-					$durabilityCost = 1.0;
+					$btcValue = 0.02;
+					$durabilityCost = 1.5;
 					break;
 				case 'weak_vein':
-					$btcValue = 0.001;
+					$btcValue = 0.000100;
 					$durabilityCost = 5.0;
 					break;
 				case 'collapse':
